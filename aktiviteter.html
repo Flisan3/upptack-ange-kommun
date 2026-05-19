@@ -7,9 +7,13 @@
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
+<body class="page-light">
 
     <nav>
+        <div class="logo">
+            <img src="Bilder/Ange kommun Svart.png" alt="Ånge Kommun Logo">
+        </div>
+
         <ul>
             <li><a href="index.html">Hem</a></li>
             <li><a href="aktiviteter.html">Aktiviteter</a></li>
@@ -20,82 +24,102 @@
         </ul>
     </nav>
 
-    <header>
-        <div class="container">
-            <h1>Aktiviteter i Ånge kommun</h1>
-            <p>Utforska ett större utbud av aktiviteter och filtrera efter kategori, plats eller intresse.</p>
-        </div>
-    </header>
+    <main class="activities-layout">
 
-    <section>
-        <div class="container">
+    <aside class="filter-sidebar">
 
-            <h2>Filtrera aktiviteter</h2>
+        <h2>Filtrera</h2>
 
-            <form>
-                <label for="kategori">Kategori:</label>
-                <select id="kategori" name="kategori">
-                    <option value="alla">Alla</option>
-                    <option value="natur">Natur</option>
-                    <option value="kultur">Kultur</option>
-                    <option value="sport">Sport</option>
-                    <option value="familj">Familj</option>
+        <form class="filter-form">
+
+            <div class="filter-group">
+                <label>Kategori</label>
+
+                <select>
+                    <option>Alla</option>
+                    <option>Natur</option>
+                    <option>Kultur</option>
+                    <option>Sport</option>
+                    <option>Familj</option>
                 </select>
+            </div>
 
-                <label for="plats">Plats:</label>
-                <select id="plats" name="plats">
-                    <option value="alla">Alla platser</option>
-                    <option value="ange">Ånge</option>
-                    <option value="fransta">Fränsta</option>
-                    <option value="ljungaverk">Ljungaverk</option>
+            <div class="filter-group">
+                <label>Plats</label>
+
+                <select>
+                    <option>Alla</option>
+                    <option>Ånge</option>
+                    <option>Fränsta</option>
+                    <option>Ljungaverk</option>
                 </select>
+            </div>
 
-                <label for="sok">Sök:</label>
-                <input type="text" id="sok" name="sok" placeholder="Sök aktiviteter...">
+            <div class="filter-group">
+                <label>Sök</label>
 
-                <button type="submit">Filtrera</button>
-            </form>
+                <input type="text" placeholder="Sök aktivitet...">
+            </div>
 
-        </div>
-    </section>
+            <button type="submit">
+                Filtrera
+            </button>
 
-    <main>
+        </form>
 
-        <div class="container">
+    </aside>
 
-            <h2>Alla aktiviteter</h2>
+    <section class="activities-content container">
 
-            <div class="grid">
+        <h2>Alla aktiviteter</h2>
 
-                <div>
-                    <h3>Vandring</h3>
-                    <div class="img-placeholder"></div>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas, voluptate.</p>
-                </div>
+        <div class="activity-grid">
 
-                <div>
-                    <h3>Fiske i lokala sjöar</h3>
-                    <div class="img-placeholder"></div>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas, voluptate.</p>
-                </div>
+            <div class="activity-card">
+                <img src="Bilder/pexels-roemag-29266809.jpg">
 
-                <div>
-                    <h3>Cykling</h3>
-                    <div class="img-placeholder"></div>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas, voluptate.</p>
-                </div>
+                <h3>Vandring</h3>
 
-                <div>
-                    <h3>Bad</h3>
-                    <div class="img-placeholder"></div>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas, voluptate.</p>
-                </div>
+                <p>
+                    Utforska skogar, leder och utsiktsplatser runt Ånge.
+                </p>
+            </div>
 
+            <div class="activity-card">
+                <img src="Bilder/pexels-kpaukshtite-4256560.jpg">
+
+                <h3>Fiske i sjöar</h3>
+
+                <p>
+                    Stillhet, natur och fiskrika vatten i regionen.
+                </p>
+            </div>
+
+            <div class="activity-card">
+                <img src="Bilder/pexels-scott-neil-302581859-13608734.jpg">
+
+                <h3>Cykling</h3>
+
+                <p>
+                    Perfekta vägar för både nybörjare och erfarna cyklister.
+                </p>
+            </div>
+
+            <div class="activity-card">
+                <img src="Bilder/pexels-roemag-34992091.jpg">
+
+                <h3>Bad & sjöliv</h3>
+
+                <p>
+                    Sommarnjutning vid sjöar och badplatser.
+                </p>
             </div>
 
         </div>
 
-    </main>
+    </section>
+
+</main>
 
     <footer>
         <p>Copyright © 2024 Ånge kommun</p>
