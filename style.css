@@ -25,6 +25,10 @@ body{
     line-height:1.7;
 }
 
+.page-light main{
+    padding-top:100px;
+}
+
 .hero{
     height:100vh;
     background-image:url("Bilder/pexels-roemag-29266809.jpg");
@@ -44,8 +48,10 @@ nav{
     justify-content:space-between;
     align-items:center;
     padding:20px 8%;
-    position:sticky;
+    position:fixed;
     top:0;
+    left:0;
+    width:100%;
     z-index:1000;
     transition:0.3s ease;
 }
@@ -63,11 +69,28 @@ nav a{
     transition:0.3s;
 }
 
-.page-hero nav{
+nav.scrolled{
+    background:white;
+    box-shadow:0 5px 20px rgba(0,0,0,0.08);
+}
+
+nav.scrolled a{
+    color:var(--dark);
+}
+
+nav.scrolled a:hover{
+    color:var(--secondary);
+}
+
+nav.scrolled .logo img{
+    filter:none;
+}
+
+.page-hero nav:not(.scrolled){
     background:transparent;
 }
 
-.page-hero nav a{
+.page-hero nav:not(.scrolled) a{
     color:white;
 }
 
@@ -331,6 +354,81 @@ section h2{
 
 .activity-card p{
     padding:0 20px 20px;
+}
+
+.food-hero{
+    padding:120px 0 60px;
+    background:var(--primary);
+    color:var(--bg);
+    text-align:center;
+}
+
+.food-hero h1{
+    font-size:48px;
+    margin-bottom:10px;
+}
+
+.food-hero p{
+    font-size:18px;
+    opacity:0.9;
+}
+
+.food-feature{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:30px;
+    margin-top:40px;
+    align-items:center;
+}
+
+.food-feature-image{
+    height:300px;
+    background:var(--secondary);
+    border-radius:20px;
+}
+
+.food-feature-content h3{
+    color:var(--primary);
+    margin-bottom:10px;
+}
+
+.food-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:25px;
+    margin-top:30px;
+}
+
+.food-grid.large{
+    grid-template-columns:repeat(2,1fr);
+}
+
+.food-card{
+    background:var(--bg);
+    padding:20px;
+    border-radius:20px;
+    transition:0.3s;
+}
+
+.food-card:hover{
+    transform:translateY(-5px);
+    background:var(--accent);
+}
+
+.food-img{
+    height:180px;
+    background:var(--secondary);
+    border-radius:15px;
+    margin-bottom:15px;
+}
+
+.food-card h3{
+    color:var(--primary);
+    margin-bottom:8px;
+}
+
+.food-card p{
+    color:var(--dark);
 }
 
 footer{
