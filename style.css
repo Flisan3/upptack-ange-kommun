@@ -39,13 +39,11 @@ body{
 
 .hero-overlay{
     height:100%;
-    background:rgba(0,0,0,0.45);
     color:white;
 }
 
 .contact-page-overlay{
     height:100%;
-    background:rgba(47,62,70,0.65);
     color:white;
 }
 
@@ -450,7 +448,6 @@ section h2{
 
 .events-overlay{
     height:100%;
-    background:rgba(47,62,70,0.65);
     display:flex;
     align-items:center;
     justify-content:center;
@@ -637,7 +634,6 @@ footer{
 
 .contact-overlay{
     height:100%;
-    background:rgba(47,62,70,0.65);
     display:flex;
     align-items:center;
     justify-content:center;
