@@ -31,18 +31,13 @@ body{
 
 .hero{
     height:100vh;
-    background-image:url("Bilder/pexels-roemag-29266809.jpg");
+    background-image:url("/Bilder/pexels-roemag-29266809.jpg");
     background-size:cover;
     background-position:center;
     position:relative;
 }
 
 .hero-overlay{
-    height:100%;
-    color:white;
-}
-
-.contact-page-overlay{
     height:100%;
     color:white;
 }
@@ -88,18 +83,6 @@ nav.scrolled a:hover{
 
 nav.scrolled .logo img{
     filter:none;
-}
-
-.page-hero nav:not(.scrolled){
-    background:transparent;
-}
-
-.page-hero nav:not(.scrolled) a{
-    color:white;
-}
-
-.page-hero nav a:hover{
-    color:var(--light);
 }
 
 .page-light nav{
@@ -424,7 +407,7 @@ section h2{
 }
 
 .food-card:hover{
-    background:var(--accent);
+    background:var(--light);
 }
 
 .food-img{
@@ -440,7 +423,7 @@ section h2{
 
 .events-hero{
     height:55vh;
-    background-image:url("Bilder/pexels-roemag-34992091.jpg");
+    background-image:url("/Bilder/pexels-roemag-34992091.jpg");
     background-size:cover;
     background-position:center;
     position:relative;
@@ -626,7 +609,7 @@ footer{
 
 .contact-hero-banner{
     height:55vh;
-    background-image:url("Bilder/pexels-roemag-29266809.jpg");
+    background-image:url("/Bilder/pexels-roemag-29266809.jpg");
     background-size:cover;
     background-position:center;
     position:relative;
@@ -725,6 +708,36 @@ footer{
     display:grid;
     grid-template-columns:repeat(3,1fr);
     gap:25px;
+}
+
+.contact-page-overlay{
+    background-image:url("/Bilder/pexels-roemag-29266809.jpg");
+    background-size:cover;
+}
+
+.contact-page nav{
+    background: transparent;
+}
+
+.contact-page nav a{
+    color: white;
+}
+
+.contact-page nav.scrolled{
+    background: white;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+}
+
+.contact-page nav.scrolled a{
+    color: var(--dark);
+}
+
+.contact-page .logo img{
+    filter: brightness(0) invert(1);
+}
+
+.contact-page nav.scrolled .logo img{
+    filter: none;
 }
 
 .info-box{
