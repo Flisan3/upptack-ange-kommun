@@ -1,0 +1,127 @@
+```html
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Karta | Upptäck Ånge Kommun</title>
+
+    <link rel="stylesheet" href="/Styling/style.css">
+
+    <link
+        rel="stylesheet"
+        href="https://unpkg.com/leaflet/dist/leaflet.css">
+</head>
+
+<body class="page-light">
+
+    <nav>
+
+        <div class="logo">
+            <img src="/Bilder/Ange kommun Svart.png" alt="Ånge Kommun Logo">
+        </div>
+
+        <ul>
+            <li><a href="/Sidor/index.html">Hem</a></li>
+            <li><a href="/Sidor/aktiviteter.html">Aktiviteter</a></li>
+            <li><a href="/Sidor/mat.html">Mat</a></li>
+            <li><a href="/Sidor/evenemang.html">Evenemang</a></li>
+            <li><a href="/Sidor/karta.html">Karta</a></li>
+            <li><a href="/Sidor/kontakt.html">Kontakt</a></li>
+        </ul>
+
+    </nav>
+
+    <main class="map-main">
+
+        <section class="map-container">
+
+            <div class="map-box">
+
+                <div id="map"></div>
+
+            </div>
+
+            <section class="map-info">
+
+                <h2>Utforska kommunen</h2>
+
+                <p>
+                    Hitta naturupplevelser, restauranger,
+                    aktiviteter och sevärdheter direkt på kartan.
+                </p>
+
+                <div class="map-search">
+                    <input type="text" placeholder="Sök plats...">
+                </div>
+
+                <div class="map-buttons">
+
+                    <button class="map-btn active">
+                        Alla
+                    </button>
+
+                    <button class="map-btn">
+                        Aktiviteter
+                    </button>
+
+                    <button class="map-btn">
+                        Natur
+                    </button>
+
+                    <button class="map-btn">
+                        Mat
+                    </button>
+
+                </div>
+
+            </section>
+
+            <section class="map-locations">
+
+                <div class="location-card">
+
+                    <h3>Flataklocken</h3>
+
+                    <p>
+                        Fantastisk utsiktsplats och vandring.
+                    </p>
+
+                </div>
+
+                <div class="location-card">
+
+                    <h3>Borgsjö Hembygdsgård</h3>
+
+                    <p>
+                        Historia och kultur i naturskön miljö.
+                    </p>
+
+                </div>
+
+                <div class="location-card">
+
+                    <h3>Ånge Camping</h3>
+
+                    <p>
+                        Perfekt för friluftsliv och familj.
+                    </p>
+
+                </div>
+
+            </section>
+
+        </section>
+
+    </main>
+
+    <footer>
+        <p>© 2026 Ånge kommun • Upptäck Ånge</p>
+    </footer>
+
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+    <script src="/Scripts/map.js"></script>
+
+</body>
+</html>
