@@ -11,7 +11,7 @@
 
     <nav>
         <div class="logo">
-            <img src="/Bilder/Ange kommun Svart.png" alt="Ånge Kommun Logo">
+            <a href="/Sidor/index.html"><span>Upptäck</span> <span class="logo-accent">Ånge</span></a>
         </div>
 
         <ul>
@@ -28,37 +28,44 @@
 
     <aside class="filter-sidebar">
 
+        <div class="filter-tab-wrapper">
+            <button type="button" class="filter-toggle" aria-expanded="false">
+                <span>Filter</span>
+                <span class="toggle-icon">+</span>
+            </button>
+        </div>
+
         <h2>Filtrera</h2>
 
         <form class="filter-form">
 
             <div class="filter-group">
-                <label>Kategori</label>
+                <label for="category-filter">Kategori</label>
 
-                <select>
-                    <option>Alla</option>
-                    <option>Natur</option>
-                    <option>Kultur</option>
-                    <option>Sport</option>
-                    <option>Familj</option>
+                <select id="category-filter" name="category">
+                    <option value="alla">Alla</option>
+                    <option value="natur">Natur</option>
+                    <option value="kultur">Kultur</option>
+                    <option value="sport">Sport</option>
+                    <option value="familj">Familj</option>
                 </select>
             </div>
 
             <div class="filter-group">
-                <label>Plats</label>
+                <label for="location-filter">Plats</label>
 
-                <select>
-                    <option>Alla</option>
-                    <option>Ånge</option>
-                    <option>Fränsta</option>
-                    <option>Ljungaverk</option>
+                <select id="location-filter" name="location">
+                    <option value="alla">Alla</option>
+                    <option value="ange">Ånge</option>
+                    <option value="fransta">Fränsta</option>
+                    <option value="ljungaverk">Ljungaverk</option>
                 </select>
             </div>
 
             <div class="filter-group">
-                <label>Sök</label>
+                <label for="search-filter">Sök</label>
 
-                <input type="text" placeholder="Sök aktivitet...">
+                <input id="search-filter" name="search" type="text" placeholder="Sök aktivitet...">
             </div>
 
             <button type="submit">
@@ -75,44 +82,44 @@
 
         <div class="activity-grid">
 
-            <div class="activity-card">
-                <img src="/Bilder/pexels-roemag-29266809.jpg">
-
+            <div class="activity-card" role="button" tabindex="0" aria-expanded="false" data-category="natur" data-location="ange">
+                <img src="/Bilder/pexels-roemag-29266809.jpg" alt="Vandring i naturen">
                 <h3>Vandring</h3>
-
-                <p>
-                    Utforska skogar, leder och utsiktsplatser runt Ånge.
-                </p>
+                <p>Utforska skogar, leder och utsiktsplatser runt Ånge.</p>
+                <div class="activity-expanded">
+                    <p>Upptäck familjevänliga stigar och utsiktsplatser med natursköna rastplatser. Ta med en picknick och följ lederna runt sjöar och älvar.</p>
+                    <a href="/Sidor/karta.html" class="map-btn-card">Visa på karta</a>
+                </div>
             </div>
 
-            <div class="activity-card">
-                <img src="/Bilder/pexels-kpaukshtite-4256560.jpg">
-
+            <div class="activity-card" role="button" tabindex="0" aria-expanded="false" data-category="natur" data-location="ljungaverk">
+                <img src="/Bilder/pexels-kpaukshtite-4256560.jpg" alt="Fiske i sjöar">
                 <h3>Fiske i sjöar</h3>
-
-                <p>
-                    Stillhet, natur och fiskrika vatten i regionen.
-                </p>
+                <p>Stillhet, natur och fiskrika vatten i regionen.</p>
+                <div class="activity-expanded">
+                    <p>Ta med ditt spö och njut av fiskelyckan vid Ånge- och Ljungaverkssjöarna. Perfekt för en lugn dag tillsammans med familjen eller vänner.</p>
+                    <a href="/Sidor/karta.html" class="map-btn-card">Visa på karta</a>
+                </div>
             </div>
 
-            <div class="activity-card">
-                <img src="/Bilder/pexels-scott-neil-302581859-13608734.jpg">
-
+            <div class="activity-card" role="button" tabindex="0" aria-expanded="false" data-category="sport" data-location="fransta">
+                <img src="/Bilder/pexels-scott-neil-302581859-13608734.jpg" alt="Cykling på landsväg">
                 <h3>Cykling</h3>
-
-                <p>
-                    Perfekta vägar för både nybörjare och erfarna cyklister.
-                </p>
+                <p>Perfekta vägar för både nybörjare och erfarna cyklister.</p>
+                <div class="activity-expanded">
+                    <p>Upptäck slingrande cykelrutter genom byar och skogar, med stopp vid caféer och utsiktsplatser. Passar både MTB och racercykel.</p>
+                    <a href="/Sidor/karta.html" class="map-btn-card">Visa på karta</a>
+                </div>
             </div>
 
-            <div class="activity-card">
-                <img src="/Bilder/pexels-roemag-34992091.jpg">
-
+            <div class="activity-card" role="button" tabindex="0" aria-expanded="false" data-category="familj" data-location="ange">
+                <img src="/Bilder/pexels-roemag-34992091.jpg" alt="Badplats vid sjö">
                 <h3>Bad & sjöliv</h3>
-
-                <p>
-                    Sommarnjutning vid sjöar och badplatser.
-                </p>
+                <p>Sommarnjutning vid sjöar och badplatser.</p>
+                <div class="activity-expanded">
+                    <p>Hitta barnvänliga badplatser med mjuk sand och bra service. Kombinera badet med en promenad längs strandkanten och grillfika.</p>
+                    <a href="/Sidor/karta.html" class="map-btn-card">Visa på karta</a>
+                </div>
             </div>
 
         </div>
@@ -124,6 +131,8 @@
     <footer>
         <p>Copyright © 2024 Ånge kommun</p>
     </footer>
+
+    <script src="/Scripts/aktiviteter.js"></script>
 
 </body>
 </html>

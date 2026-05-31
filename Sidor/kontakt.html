@@ -11,7 +11,7 @@
     <div class="contact-page-overlay">
         <nav>
             <div class="logo">
-                <img src="/Bilder/Ange kommun Svart.png" alt="Ånge Kommun Logo">
+                <a href="/Sidor/index.html"><span>Upptäck</span> <span class="logo-accent">Ånge</span></a>
             </div>
 
             <ul>
@@ -47,26 +47,30 @@
 
                 <h2>Skicka ett meddelande</h2>
 
-                <form class="contact-form">
+                <form class="contact-form" novalidate>
 
                     <div class="form-group">
-                        <label>Namn</label>
-                        <input type="text" placeholder="Ditt namn">
+                        <label for="contact-name">Namn</label>
+                        <input id="contact-name" name="name" type="text" placeholder="Ditt namn">
+                        <span class="form-error" aria-live="polite"></span>
                     </div>
 
                     <div class="form-group">
-                        <label>E-post</label>
-                        <input type="email" placeholder="Din e-post">
+                        <label for="contact-email">E-post</label>
+                        <input id="contact-email" name="email" type="email" placeholder="Din e-post">
+                        <span class="form-error" aria-live="polite"></span>
                     </div>
 
                     <div class="form-group">
-                        <label>Ämne</label>
-                        <input type="text" placeholder="Vad gäller ditt meddelande?">
+                        <label for="contact-subject">Ämne</label>
+                        <input id="contact-subject" name="subject" type="text" placeholder="Vad gäller ditt meddelande?">
+                        <span class="form-error" aria-live="polite"></span>
                     </div>
 
                     <div class="form-group">
-                        <label>Meddelande</label>
-                        <textarea placeholder="Ditt meddelande här"></textarea>
+                        <label for="contact-message">Meddelande</label>
+                        <textarea id="contact-message" name="message" placeholder="Ditt meddelande här"></textarea>
+                        <span class="form-error" aria-live="polite"></span>
                     </div>
 
                     <button type="submit">SKICKA IN</button>
@@ -79,26 +83,32 @@
 
         <section class="contact-info-section">
 
-            <div class="info-box">
-                <div class="info-icon">✉</div>
-                <h3>E-post</h3>
-                <p>info@ange.se</p>
-                <span>Vi svarar inom 1–2 arbetsdagar.</span>
-            </div>
+            <a class="info-link" href="mailto:info@ange.se">
+                <div class="info-box">
+                    <div class="info-icon">✉</div>
+                    <h3>E-post</h3>
+                    <p>info@ange.se</p>
+                    <span>Vi svarar inom 1–2 arbetsdagar.</span>
+                </div>
+            </a>
 
-            <div class="info-box">
-                <div class="info-icon">☎</div>
-                <h3>Telefon</h3>
-                <p>1234-56 78</p>
-                <span>Vardagar 08:00 – 16:00</span>
-            </div>
+            <a class="info-link" href="tel:+4612345678">
+                <div class="info-box">
+                    <div class="info-icon">☎</div>
+                    <h3>Telefon</h3>
+                    <p>1234-56 78</p>
+                    <span>Vardagar 08:00 – 16:00</span>
+                </div>
+            </a>
 
-            <div class="info-box">
-                <div class="info-icon">⌂</div>
-                <h3>Besöksadress</h3>
-                <p>Exempelgatan 1</p>
-                <span>841 32 Ånge</span>
-            </div>
+            <a class="info-link" href="/Sidor/karta.html">
+                <div class="info-box">
+                    <div class="info-icon">⌂</div>
+                    <h3>Besöksadress</h3>
+                    <p>Exempelgatan 1</p>
+                    <span>841 32 Ånge</span>
+                </div>
+            </a>
 
         </section>
 
@@ -110,6 +120,7 @@
 
 <script src="/Scripts/index.js"></script>
 <script src="/Scripts/special-nav.js"></script>
+<script src="/Scripts/kontakt.js"></script>
 
 </body>
 </html>

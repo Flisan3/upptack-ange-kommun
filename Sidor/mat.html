@@ -11,7 +11,7 @@
 
 <nav>
     <div class="logo">
-        <img src="/Bilder/Ange kommun Svart.png" alt="Ånge Kommun Logo">
+        <a href="/Sidor/index.html"><span>Upptäck</span> <span class="logo-accent">Ånge</span></a>
     </div>
 
     <ul>
@@ -36,7 +36,7 @@
     <section class="container">
         <h2>Veckans utvalda</h2>
 
-        <div class="food-feature">
+        <div class="food-feature activity-card" role="button" tabindex="0" aria-expanded="false">
             <div class="food-feature-image"></div>
 
             <div class="food-feature-content">
@@ -44,6 +44,11 @@
                 <p>
                     En lokal favorit med hemlagade rätter, fika och klassisk svensk husmanskost.
                 </p>
+            </div>
+
+            <div class="activity-expanded">
+                <p>Upptäck veckans utvalda restaurang med genuin service, färska råvaror och en inbjudande atmosfär.</p>
+                <a href="/Sidor/karta.html" class="map-btn-card">Visa på karta</a>
             </div>
         </div>
     </section>
@@ -53,22 +58,34 @@
 
         <div class="food-grid">
 
-            <div class="food-card">
+            <div class="food-card activity-card" role="button" tabindex="0" aria-expanded="false">
                 <div class="food-img"></div>
                 <h3>Torget Café</h3>
                 <p>Klassiskt café mitt i centrum.</p>
+                <div class="activity-expanded">
+                    <p>Välbesökt café med hembakat bröd, smörgåsar och gott kaffe i en trivsam miljö.</p>
+                    <a href="/Sidor/karta.html" class="map-btn-card">Visa på karta</a>
+                </div>
             </div>
 
-            <div class="food-card">
+            <div class="food-card activity-card" role="button" tabindex="0" aria-expanded="false">
                 <div class="food-img"></div>
                 <h3>Söderins</h3>
                 <p>Hemmagjord fika och lokal känsla.</p>
+                <div class="activity-expanded">
+                    <p>Populärt fik med bakverk från egna bageriet och en mysig atmosfär för eftermiddagsfika.</p>
+                    <a href="/Sidor/karta.html" class="map-btn-card">Visa på karta</a>
+                </div>
             </div>
 
-            <div class="food-card">
+            <div class="food-card activity-card" role="button" tabindex="0" aria-expanded="false">
                 <div class="food-img"></div>
                 <h3>Knuten</h3>
                 <p>Avslappnat café med moderna smaker.</p>
+                <div class="activity-expanded">
+                    <p>Modern caféupplevelse med spännande drycker, smörgåsar och en avslappnad miljö nära centrum.</p>
+                    <a href="/Sidor/karta.html" class="map-btn-card">Visa på karta</a>
+                </div>
             </div>
 
         </div>
@@ -79,16 +96,24 @@
 
         <div class="food-grid large">
 
-            <div class="food-card">
+            <div class="food-card activity-card" role="button" tabindex="0" aria-expanded="false">
                 <div class="food-img"></div>
                 <h3>Ljungaverk Pizzeria</h3>
                 <p>Snabb och populär pizza för alla tillfällen.</p>
+                <div class="activity-expanded">
+                    <p>Färska pizzor bakade med lokala råvaror och en avslappnad atmosfär för hela familjen.</p>
+                    <a href="/Sidor/karta.html" class="map-btn-card">Visa på karta</a>
+                </div>
             </div>
 
-            <div class="food-card">
+            <div class="food-card activity-card" role="button" tabindex="0" aria-expanded="false">
                 <div class="food-img"></div>
                 <h3>The Moon</h3>
                 <p>En blandning av lokala och internationella rätter.</p>
+                <div class="activity-expanded">
+                    <p>Besök en restaurang med kreativa smaker, lokala ingredienser och en annorlunda matupplevelse.</p>
+                    <a href="/Sidor/karta.html" class="map-btn-card">Visa på karta</a>
+                </div>
             </div>
 
         </div>
@@ -100,5 +125,6 @@
     <p>© 2026 Ånge kommun • Mat & Upplevelser</p>
 </footer>
 
+<script src="/Scripts/mat.js"></script>
 </body>
 </html>

@@ -12,7 +12,7 @@
         <div class="hero-overlay">
             <nav>
                 <div class="logo">
-                    <img src="/Bilder/Ange kommun Svart.png" alt="Ånge Kommun Logo">
+                    <a href="/Sidor/index.html"><span>Upptäck</span> <span class="logo-accent">Ånge</span></a>
                 </div>
 
                 <ul>
@@ -44,16 +44,27 @@
         <section id="aktiviteter">
             <h2>Veckans aktivitet</h2>
 
-            <div class="card">
+            <div class="activity-card" role="button" tabindex="0" aria-expanded="false">
                 <img src="/Bilder/pexels-scott-neil-302581859-13608734.jpg" alt="Natur i Ånge">
 
-                <div class="card-content">
-                    <h3>Vandra i Jämtlandsskogarna</h3>
+                <h3>Vandra i Jämtlandsskogarna</h3>
 
+                <p>
+                    Upplev Ånges fantastiska natur med vandringsleder,
+                    sjöar och utsiktsplatser för hela familjen.
+                </p>
+
+                <div class="activity-expanded">
                     <p>
-                        Upplev Ånges fantastiska natur med vandringsleder,
-                        sjöar och utsiktsplatser för hela familjen.
+                        Här kan besökare utforska flera mil av markerade leder,
+                        rastplatser, grillområden och fantastiska utsikter över
+                        det norrländska landskapet. Lederna passar både nybörjare
+                        och erfarna vandrare.
                     </p>
+
+                    <a href="/Sidor/karta.html" class="map-btn-card">
+                        Visa på karta
+                    </a>
                 </div>
             </div>
         </section>
@@ -61,7 +72,7 @@
         <section id="mat">
             <h2>Matrekommendation</h2>
 
-            <div class="card">
+            <div class="card activity-card" role="button" tabindex="0" aria-expanded="false">
                 <img src="/Bilder/pexels-kpaukshtite-4256560.jpg" alt="Mat i Ånge">
 
                 <div class="card-content">
@@ -72,6 +83,14 @@
                         nybakat fika och norrländska specialiteter.
                     </p>
                 </div>
+
+                <div class="activity-expanded">
+                    <p>
+                        Upptäck charmiga matställen med lokala råvaror och norrländska
+                        smaker. Perfekt för lunch, fika och kvällsmåltid under din vistelse.
+                    </p>
+                    <a href="/Sidor/karta.html" class="map-btn-card">Visa på karta</a>
+                </div>
             </div>
         </section>
 
@@ -79,38 +98,43 @@
             <h2>Snabbkategorier</h2>
 
             <div class="categories">
-                <div class="category-card">
+
+                <div class="category-card" role="button" tabindex="0" aria-expanded="false" data-category="fiske">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
                         <path d="M307.2 102.4C296.6 94.4 282.2 93.9 270.9 100.9C259.6 107.9 254 121.3 256.6 134.3L266.3 182.9C246.9 191.9 229.4 202.8 213.9 214.4C198.6 225.9 184.9 238.3 173.2 250.7L80.1 196.4C67.6 189.1 51.7 191.1 41.4 201.3C31.1 211.5 29 227.3 36.1 239.9L82 320L36.2 400.1C29 412.7 31.2 428.5 41.5 438.7C51.8 448.9 67.6 450.9 80.2 443.6L173.3 389.3C185.1 401.6 198.7 414.1 214 425.6C229.5 437.2 247 448.1 266.4 457.1L256.7 505.7C254.1 518.7 259.8 532 271 539C282.2 546 296.6 545.5 307.3 537.5L384.9 479.3C439.8 475.3 486.4 452.3 522.1 425.5C561.3 396.1 589.3 360.8 603.7 336C609.5 326.1 609.5 313.8 603.7 303.9C589.3 279.1 561.2 243.8 522.1 214.4C486.3 187.6 439.8 164.6 384.9 160.6L307.2 102.4z"/>
                     </svg>
                     <span>Fiske</span>
                 </div>
 
-                <div class="category-card">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><path d="M112 160C138.5 160 160 138.5 160 112C160 85.5 138.5 64 112 64C85.5 64 64 85.5 64 112C64 138.5 85.5 160 112 160zM96 192C60.7 192 32 220.7 32 256L32 384C32 401.7 46.3 416 64 416C73.8 416 82.5 411.6 88.4 404.8L112.4 549.3C115.3 566.7 131.8 578.5 149.2 575.6C166.6 572.7 178.4 556.2 175.5 538.8L155 416.1L170.7 416.1L200.7 551C204.5 568.3 221.6 579.1 238.9 575.3C256.2 571.5 267 554.4 263.2 537.1L205.9 279.1L322.2 332.9C322.7 333.2 323.3 333.4 323.8 333.6C332.4 337.2 341.8 336.7 349.7 332.9C353.1 331.3 356.3 329 359 326.2C362.1 323 364.5 319.2 366.1 314.8C366.2 314.5 366.3 314.1 366.4 313.8L368.9 306.3C374.6 289.2 387.2 275.4 403.6 268.1L411.6 264.6C412.6 264.2 413.5 263.8 414.5 263.4L397.6 326.9C392 348 397.5 370.5 412.3 386.6L483 463.7L505 551.8C509.3 568.9 526.7 579.4 543.8 575.1C560.9 570.8 571.4 553.4 567.1 536.3L544.1 444.2C542.2 436.4 538.3 429.3 532.9 423.4L483.4 369.4L502.7 303.9L512.3 326.9C516.7 337.5 524.8 346.2 535.1 351.4L561.8 364.7C577.6 372.6 596.8 366.2 604.7 350.4C612.6 334.6 606.2 315.4 590.4 307.5L569 296.8L553.7 260C536.6 218.9 496.4 192.1 451.8 192.1C429 192.1 406.5 196.9 385.7 206.1L377.7 209.6C353.3 220.5 333.1 238.6 319.6 261.2L189.3 200.9C176.7 195 162.9 192 149 192L96 192zM496 160C522.5 160 544 138.5 544 112C544 85.5 522.5 64 496 64C469.5 64 448 85.5 448 112C448 138.5 469.5 160 496 160zM381.7 399.6L356.7 462L297.3 521.4C284.8 533.9 284.8 554.2 297.3 566.7C309.8 579.2 330.1 579.2 342.6 566.7L404.3 505C408.9 500.4 412.5 494.9 414.9 488.9L429.4 452.7L388.7 408.3C386.2 405.6 383.9 402.7 381.7 399.7z"/></svg>
+                <div class="category-card" role="button" tabindex="0" aria-expanded="false" data-category="familj">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">                        
+                        <path d="M112 160C138.5 160 160 138.5 160 112C160 85.5 138.5 64 112 64C85.5 64 64 85.5 64 112C64 138.5 85.5 160 112 160zM96 192C60.7 192 32 220.7 32 256L32 384C32 401.7 46.3 416 64 416C73.8 416 82.5 411.6 88.4 404.8L112.4 549.3C115.3 566.7 131.8 578.5 149.2 575.6C166.6 572.7 178.4 556.2 175.5 538.8L155 416.1L170.7 416.1L200.7 551C204.5 568.3 221.6 579.1 238.9 575.3C256.2 571.5 267 554.4 263.2 537.1L205.9 279.1L322.2 332.9C322.7 333.2 323.3 333.4 323.8 333.6C332.4 337.2 341.8 336.7 349.7 332.9C353.1 331.3 356.3 329 359 326.2C362.1 323 364.5 319.2 366.1 314.8C366.2 314.5 366.3 314.1 366.4 313.8L368.9 306.3C374.6 289.2 387.2 275.4 403.6 268.1L411.6 264.6C412.6 264.2 413.5 263.8 414.5 263.4L397.6 326.9C392 348 397.5 370.5 412.3 386.6L483 463.7L505 551.8C509.3 568.9 526.7 579.4 543.8 575.1C560.9 570.8 571.4 553.4 567.1 536.3L544.1 444.2C542.2 436.4 538.3 429.3 532.9 423.4L483.4 369.4L502.7 303.9L512.3 326.9C516.7 337.5 524.8 346.2 535.1 351.4L561.8 364.7C577.6 372.6 596.8 366.2 604.7 350.4C612.6 334.6 606.2 315.4 590.4 307.5L569 296.8L553.7 260C536.6 218.9 496.4 192.1 451.8 192.1C429 192.1 406.5 196.9 385.7 206.1L377.7 209.6C353.3 220.5 333.1 238.6 319.6 261.2L189.3 200.9C176.7 195 162.9 192 149 192L96 192zM496 160C522.5 160 544 138.5 544 112C544 85.5 522.5 64 496 64C469.5 64 448 85.5 448 112C448 138.5 469.5 160 496 160zM381.7 399.6L356.7 462L297.3 521.4C284.8 533.9 284.8 554.2 297.3 566.7C309.8 579.2 330.1 579.2 342.6 566.7L404.3 505C408.9 500.4 412.5 494.9 414.9 488.9L429.4 452.7L388.7 408.3C386.2 405.6 383.9 402.7 381.7 399.7z"/></svg>                    </svg>
                     <span>Familj</span>
                 </div>
 
-                <div class="category-card">
+                <div class="category-card" role="button" tabindex="0" aria-expanded="false" data-category="musik">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
                         <path d="M532 71C539.6 77.1 544 86.3 544 96L544 400C544 444.2 501 480 448 480C395 480 352 444.2 352 400C352 355.8 395 320 448 320C459.2 320 470 321.6 480 324.6L480 207.9L256 257.7L256 464C256 508.2 213 544 160 544C107 544 64 508.2 64 464C64 419.8 107 384 160 384C171.2 384 182 385.6 192 388.6L192 160C192 145 202.4 132 217.1 128.8L505.1 64.8C514.6 62.7 524.5 65 532.1 71.1z"/>
                     </svg>
                     <span>Musik</span>
                 </div>
 
-                <div class="category-card">
+                <div class="category-card" role="button" tabindex="0" aria-expanded="false" data-category="utflykt">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
                         <path d="M576 112C576 103.7 571.7 96 564.7 91.6C557.7 87.2 548.8 86.8 541.4 90.5L416.5 152.1L244 93.4C230.3 88.7 215.3 89.6 202.1 95.7L77.8 154.3C69.4 158.2 64 166.7 64 176L64 528C64 536.2 68.2 543.9 75.1 548.3C82 552.7 90.7 553.2 98.2 549.7L225.5 489.8L396.2 546.7C409.9 551.3 424.7 550.4 437.8 544.2L562.2 485.7C570.6 481.7 576 473.3 576 464L576 112z"/>
                     </svg>
                     <span>Utflykter</span>
                 </div>
+
             </div>
+
+            <div id="category-result"></div>
         </section>
 
         <section>
             <h2>Om Ånge kommun</h2>
 
-            <div class="card">
+            <div class="card activity-card" role="button" tabindex="0" aria-expanded="false">
                 <img src="/Bilder/pexels-roemag-34992091.jpg" alt="Ånge kommun">
 
                 <div class="card-content">
@@ -118,6 +142,13 @@
                         Ånge kommun erbjuder lugn natur, rikt kulturliv och
                         aktiviteter året runt. Här möts skogar, sjöar och
                         lokala evenemang i hjärtat av Norrland.
+                    </p>
+                </div>
+
+                <div class="activity-expanded">
+                    <p>
+                        Här kan du planera din nästa vistelse och hitta tips på
+                        sevärdheter, vandringsleder och kulturupplevelser i området.
                     </p>
                 </div>
             </div>
