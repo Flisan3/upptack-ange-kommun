@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mat</title>
-    <link rel="stylesheet" href="/Styling/style.css">
+    <link rel="stylesheet" href="/Styling/style.css"> 
 </head>
 
 <body class="page-light">
@@ -25,9 +25,11 @@
 </nav>
 
 <header class="food-hero">
-    <div class="container">
-        <h1>Mat i Ånge kommun</h1>
-        <p>Lokala smaker, caféer och restauranger värda ett besök året runt.</p>
+    <div class="food-hero-overlay">
+        <div class="food-hero-content">
+            <h1>Mat i Ånge kommun</h1>
+            <p>Lokala smaker, caféer och restauranger värda ett besök året runt.</p>
+        </div>
     </div>
 </header>
 
@@ -37,18 +39,20 @@
         <h2>Veckans utvalda</h2>
 
         <div class="food-feature activity-card" role="button" tabindex="0" aria-expanded="false">
-            <div class="food-feature-image"></div>
+            <div class="food-feature-image">
+                <img src="/Bilder/pexels-alexandra-kollstrem-77751824-8856561.jpg" alt="Ånge Deli">
+            </div>
 
             <div class="food-feature-content">
                 <h3>Ånge Deli</h3>
                 <p>
-                    En lokal favorit med hemlagade rätter, fika och klassisk svensk husmanskost.
+                    En lokal lyxrestaurang som erbjuder en unik matupplevelse med fokus på högkvalitativa råvaror och ambitiöst skapade rätter.
                 </p>
             </div>
 
             <div class="activity-expanded">
                 <p>Upptäck veckans utvalda restaurang med genuin service, färska råvaror och en inbjudande atmosfär.</p>
-                <a href="/Sidor/karta.html" class="map-btn-card">Visa på karta</a>
+                <a href="/Sidor/karta.html" class="map-btn-card" data-lat="62.52697" data-lng="15.652941" data-name="Ånge Deli" data-text="Den lokala lyxrestaurangen">Visa på karta</a>
             </div>
         </div>
     </section>
@@ -59,32 +63,44 @@
         <div class="food-grid">
 
             <div class="food-card activity-card" role="button" tabindex="0" aria-expanded="false">
-                <div class="food-img"></div>
-                <h3>Torget Café</h3>
-                <p>Klassiskt café mitt i centrum.</p>
+                <div class="food-img">
+                    <img src="/Bilder/pexels-polina-tankilevitch-5419186.jpg" alt="Torgets Café">
+                </div>
+                <div class="food-text">
+                    <h3>Torgets Café</h3>
+                    <p>Klassiskt svenskt café mitt i centrum.</p>
+                </div>
                 <div class="activity-expanded">
-                    <p>Välbesökt café med hembakat bröd, smörgåsar och gott kaffe i en trivsam miljö.</p>
-                    <a href="/Sidor/karta.html" class="map-btn-card">Visa på karta</a>
+                    <p>Välbesökt café med bakelser, smörgåsar och gott kaffe i en trivsam miljö.</p>
+                    <a href="/Sidor/karta.html" class="map-btn-card" data-lat="62.524036" data-lng="15.659463" data-name="Torget Café" data-text="Ett trivsamt café där du kan njuta av en kopp varm kaffe">Visa på karta</a>
                 </div>
             </div>
 
             <div class="food-card activity-card" role="button" tabindex="0" aria-expanded="false">
-                <div class="food-img"></div>
-                <h3>Söderins</h3>
-                <p>Hemmagjord fika och lokal känsla.</p>
+                <div class="food-img">
+                    <img src="/Bilder/pexels-zhengdong-hu-297240489-14363849.jpg" alt="Bageri Kringlan">
+                </div>
+                <div class="food-text">
+                    <h3>Bageri Kringlan</h3>
+                    <p>Hemmagjord fika och lokal känsla.</p>
+                </div>
                 <div class="activity-expanded">
-                    <p>Populärt fik med bakverk från egna bageriet och en mysig atmosfär för eftermiddagsfika.</p>
-                    <a href="/Sidor/karta.html" class="map-btn-card">Visa på karta</a>
+                    <p>Populärt bageri med bakelser, tårtor, smögåstårtor och annat gott.</p>
+                    <a href="/Sidor/karta.html" class="map-btn-card" data-lat="62.525069" data-lng="15.658421" data-name="Bageri Kringlan" data-text="Ett bageri för dig som älskar hemmagjorda bakverk">Visa på karta</a>
                 </div>
             </div>
 
             <div class="food-card activity-card" role="button" tabindex="0" aria-expanded="false">
-                <div class="food-img"></div>
-                <h3>Knuten</h3>
-                <p>Avslappnat café med moderna smaker.</p>
+                <div class="food-img">
+                    <img src="/Bilder/pexels-quang-nguyen-vinh-222549-2133535.jpg" alt="Fiket på corner">
+                </div>
+                <div class="food-text">
+                    <h3>Fiket på corner</h3>
+                    <p>En del av medborgarhuset med fokus på mat dryck och andra goda grejer.</p>
+                </div>
                 <div class="activity-expanded">
-                    <p>Modern caféupplevelse med spännande drycker, smörgåsar och en avslappnad miljö nära centrum.</p>
-                    <a href="/Sidor/karta.html" class="map-btn-card">Visa på karta</a>
+                    <p>Stanna till för att bara vila och dricka en kopp kaffe, eller köpa dig en hel måltid.</p>
+                    <a href="/Sidor/karta.html" class="map-btn-card" data-lat="62.524821" data-lng="15.659887" data-name="Fiket på corner" data-text="Smidigt fikaställe">Visa på karta</a>
                 </div>
             </div>
 

@@ -605,14 +605,30 @@ section h2{
 }
 
 .food-feature-image{
-    height:300px;
-    background:var(--secondary);
     border-radius:20px;
+    overflow:hidden;
 }
 
 .food-feature-content h3{
     color:var(--primary);
-    margin-bottom:10px;
+    margin-bottom:0px;
+}
+
+.food-feature-image{
+    height:300px;
+    border-radius:20px;
+    overflow:hidden;
+}
+
+.food-feature-image img{
+    width:100%;
+    height:100%;
+    display:block;
+    object-fit:cover;
+}
+
+.food-feature .food-feature-image img{
+    height:100%;
 }
 
 .food-grid{
@@ -698,6 +714,33 @@ section h2{
 
 .food-card p{
     color:var(--dark);
+}
+
+.food-grid .food-card{
+    display:flex;
+    flex-direction:column;
+    height:100%;
+    max-height:300px;
+    min-height:320px;
+}
+
+.food-text {
+    background: rgba(255, 255, 255, 0.85);
+    padding: 15px 18px;
+    border-radius: 16px;
+    margin: 4px;
+    backdrop-filter: blur(6px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+}
+
+.food-hero{
+    position: relative;
+    padding:120px 0 60px;
+    background: url("/Bilder/pexels-rachel-claire-4992640.jpg");
+    background-size: cover;
+    background-position: center;
+    color: var(--bg);
+    text-align: center;
 }
 
 .events-hero{
