@@ -317,6 +317,10 @@ section h2{
     display:flex;
     flex-direction:column;
     max-width:320px;
+    position:sticky;
+    top:100px;
+    align-self:start;
+    z-index:2;
 }
 
 .filter-toggle{
@@ -346,16 +350,8 @@ section h2{
 .filter-sidebar{
     padding:46px 25px 40px;
     border-radius:0 0 24px 24px;
-    position:sticky;
-    top:0;
-    min-height:100vh;
-    display:flex;
-    flex-direction:column;
-    justify-content:flex-start;
-    width:320px;
-    transform:translateX(0);
-    transition:transform 0.35s ease, opacity 0.35s ease;
-    overflow:visible;
+    position:relative;
+    top:auto;
     min-height:100vh;
     display:flex;
     flex-direction:column;
@@ -460,15 +456,16 @@ section h2{
     background:var(--primary);
 }
 
-.activity-grid,
+.activity-grid{
+    display:grid;
+    grid-template-columns:repeat(4,minmax(240px,1fr));
+    gap:25px;
+    align-items:start;
+}
+
 .food-grid{
     display:grid;
     gap:25px;
-}
-
-.activity-grid{
-    grid-template-columns:repeat(4,minmax(240px,1fr));
-    align-items:start;
 }
 
 .activities-layout.closed .activity-grid{
@@ -477,13 +474,24 @@ section h2{
 
 .activity-card img{
     width:100%;
-    height:170px;
+    height:220px;
     object-fit:cover;
     object-position:center;
 }
 
 .activity-card{
     text-align:left;
+    display:flex;
+    flex-direction:column;
+    transition:box-shadow .3s ease;
+}
+
+.activities-layout .activity-card{
+    max-height:320px;
+    transition:max-height .4s ease, box-shadow .4s ease;
+    flex:1 1 240px;
+    min-width:220px;
+    max-width:240px;
 }
 
 .activity-card h3,
@@ -506,6 +514,40 @@ section h2{
 .activity-card p{
     padding-bottom:12px;
     margin:0;
+}
+
+.activities-layout .activity-card p{
+    overflow:hidden;
+    position:relative;
+    max-height:48px;
+    line-height:1.4;
+}
+
+.activities-layout .activity-card p::after{
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 28px;
+    pointer-events: none;
+    background: linear-gradient(to bottom, rgba(244, 246, 243, 0), var(--bg));
+}
+
+.activities-layout .activity-card.expanded p{
+    max-height:none;
+}
+
+.activities-layout .activity-card.expanded p::after{
+    display:none;
+}
+
+.activity-card.expanded p{
+    max-height:none;
+}
+
+.activity-card.expanded p::after{
+    display:none;
 }
 
 .food-hero{
@@ -1217,10 +1259,21 @@ body.reveal .hero-btn {
 
 .activity-card.expanded{
     box-shadow:0 20px 40px rgba(0,0,0,0.14);
+    max-height:1000px;
 }
 
 .activity-card.expanded img{
     height:350px;
+}
+
+.activity-card.expanded > p{
+    overflow:visible;
+    color:var(--dark);
+    max-height:none;
+}
+
+.activity-card.expanded > p::after{
+    display:none;
 }
 
 .activity-card.expanded .activity-expanded{
@@ -1367,7 +1420,10 @@ body.reveal .hero-btn {
         grid-template-columns:1fr;
     }
 
-    .activity-grid,
+    .activity-grid{
+        flex-direction:column;
+    }
+
     .food-grid,
     .food-grid.large{
         grid-template-columns:1fr;
