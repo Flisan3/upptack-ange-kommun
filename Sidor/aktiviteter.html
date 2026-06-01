@@ -26,16 +26,12 @@
 
     <main class="activities-layout">
 
-    <aside class="filter-sidebar">
+        <div class="filter-panel">
+            <button type="button" class="filter-toggle" aria-expanded="true">Dölj filter</button>
 
-        <div class="filter-tab-wrapper">
-            <button type="button" class="filter-toggle" aria-expanded="false">
-                <span>Filter</span>
-                <span class="toggle-icon">+</span>
-            </button>
-        </div>
+            <aside class="filter-sidebar">
 
-        <h2>Filtrera</h2>
+                <h2>Filtrera</h2>
 
         <form class="filter-form">
 
@@ -68,14 +64,19 @@
                 <input id="search-filter" name="search" type="text" placeholder="Sök aktivitet...">
             </div>
 
-            <button type="submit">
-                Filtrera
-            </button>
+            <div class="filter-actions">
+                <button type="submit" class="filter-apply">
+                    Filtrera
+                </button>
+                <button type="button" class="filter-reset">
+                    Återställ
+                </button>
+            </div>
 
         </form>
 
     </aside>
-
+        </div>
     <section class="activities-content container">
 
         <h2>Alla aktiviteter</h2>
@@ -88,7 +89,7 @@
                 <p>Utforska skogar, leder och utsiktsplatser runt Ånge.</p>
                 <div class="activity-expanded">
                     <p>Upptäck familjevänliga stigar och utsiktsplatser med natursköna rastplatser. Ta med en picknick och följ lederna runt sjöar och älvar.</p>
-                    <a href="/Sidor/karta.html" class="map-btn-card">Visa på karta</a>
+                    <a href="/Sidor/karta.html?lat=62.418&lng=16.051&name=Flataklocken&text=Utsiktsplats&category=natur" class="map-btn-card" data-lat="62.418" data-lng="16.051" data-name="Flataklocken" data-text="Utsiktsplats" data-category="natur">Visa på karta</a>
                 </div>
             </div>
 
@@ -98,7 +99,7 @@
                 <p>Stillhet, natur och fiskrika vatten i regionen.</p>
                 <div class="activity-expanded">
                     <p>Ta med ditt spö och njut av fiskelyckan vid Ånge- och Ljungaverkssjöarna. Perfekt för en lugn dag tillsammans med familjen eller vänner.</p>
-                    <a href="/Sidor/karta.html" class="map-btn-card">Visa på karta</a>
+                    <a href="/Sidor/karta.html?lat=62.629&lng=16.078&name=Borgsj%C3%B6%20Hembygdsg%C3%A5rd&text=Kultur%20och%20historia&category=kultur" class="map-btn-card" data-lat="62.629" data-lng="16.078" data-name="Borgsjö Hembygdsgård" data-text="Kultur och historia" data-category="kultur">Visa på karta</a>
                 </div>
             </div>
 
@@ -108,10 +109,30 @@
                 <p>Perfekta vägar för både nybörjare och erfarna cyklister.</p>
                 <div class="activity-expanded">
                     <p>Upptäck slingrande cykelrutter genom byar och skogar, med stopp vid caféer och utsiktsplatser. Passar både MTB och racercykel.</p>
+                    <a href="/Sidor/karta.html?lat=62.524&lng=15.657&name=Ånge%20Camping&text=Camping%20och%20natur&category=familj" class="map-btn-card" data-lat="62.524" data-lng="15.657" data-name="Ånge Camping" data-text="Camping och natur" data-category="familj">Visa på karta</a>
+                </div>
+            </div>
+
+            <div class="activity-card" role="button" tabindex="0" aria-expanded="false" data-category="familj" data-location="ange">
+                <img src="/Bilder/pexels-roemag-34992091.jpg" alt="Badplats vid sjö">
+                <h3>Bad & sjöliv</h3>
+                <p>Sommarnjutning vid sjöar och badplatser.</p>
+                <div class="activity-expanded">
+                    <p>Hitta barnvänliga badplatser med mjuk sand och bra service. Kombinera badet med en promenad längs strandkanten och grillfika.</p>
                     <a href="/Sidor/karta.html" class="map-btn-card">Visa på karta</a>
                 </div>
             </div>
 
+            <div class="activity-card" role="button" tabindex="0" aria-expanded="false" data-category="familj" data-location="ange">
+                <img src="/Bilder/pexels-roemag-34992091.jpg" alt="Badplats vid sjö">
+                <h3>Bad & sjöliv</h3>
+                <p>Sommarnjutning vid sjöar och badplatser.</p>
+                <div class="activity-expanded">
+                    <p>Hitta barnvänliga badplatser med mjuk sand och bra service. Kombinera badet med en promenad längs strandkanten och grillfika.</p>
+                    <a href="/Sidor/karta.html" class="map-btn-card">Visa på karta</a>
+                </div>
+            </div>
+            
             <div class="activity-card" role="button" tabindex="0" aria-expanded="false" data-category="familj" data-location="ange">
                 <img src="/Bilder/pexels-roemag-34992091.jpg" alt="Badplats vid sjö">
                 <h3>Bad & sjöliv</h3>
@@ -133,6 +154,7 @@
     </footer>
 
     <script src="/Scripts/aktiviteter.js"></script>
+    <script src="/Scripts/map-links.js"></script>
 
 </body>
 </html>

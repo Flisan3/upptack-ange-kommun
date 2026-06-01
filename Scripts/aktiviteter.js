@@ -1,21 +1,18 @@
 document.addEventListener("DOMContentLoaded", () => {
 
     const form = document.querySelector(".filter-form");
-    const filterSidebar = document.querySelector(".filter-sidebar");
+    const filterPanel = document.querySelector(".filter-panel");
+    const mainLayout = document.querySelector(".activities-layout");
     const toggleButton = document.querySelector(".filter-toggle");
     const cards = document.querySelectorAll(".activity-card");
 
-    if (toggleButton && filterSidebar) {
+    if (toggleButton && filterPanel && mainLayout) {
         toggleButton.addEventListener("click", () => {
-            const isOpen = filterSidebar.classList.toggle("open");
-            toggleButton.setAttribute("aria-expanded", isOpen ? "true" : "false");
-        });
-
-        document.addEventListener("click", (event) => {
-            if (!filterSidebar.contains(event.target) && !toggleButton.contains(event.target) && filterSidebar.classList.contains("open")) {
-                filterSidebar.classList.remove("open");
-                toggleButton.setAttribute("aria-expanded", "false");
-            }
+            const isClosed = filterPanel.classList.toggle("closed");
+            mainLayout.classList.toggle("closed", isClosed);
+            toggleButton.setAttribute("aria-expanded", String(!isClosed));
+            toggleButton.setAttribute("aria-label", isClosed ? "Visa filter" : "Dölj filter");
+            toggleButton.textContent = isClosed ? "Visa" : "Dölj filter";
         });
     }
 
@@ -54,7 +51,17 @@ document.addEventListener("DOMContentLoaded", () => {
         filterCards();
     });
 
-    form.addEventListener("input", filterCards);
+    // Remove live filtering; apply filters only when user clicks "Filtrera".
+    const resetBtn = document.querySelector('.filter-reset');
+    if (resetBtn) {
+        resetBtn.addEventListener('click', () => {
+            const selects = form.querySelectorAll('select');
+            selects.forEach(s => s.value = 'alla');
+            const search = form.querySelector('input[name="search"]');
+            if (search) search.value = '';
+            filterCards();
+        });
+    }
 
     cards.forEach(card => {
         card.addEventListener("click", (event) => {

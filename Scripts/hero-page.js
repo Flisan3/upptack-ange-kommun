@@ -74,24 +74,44 @@ document.addEventListener("DOMContentLoaded", () => {
 
    const data = {
     fiske: {
-        title: "Fiske i Ljungan",
-        image: "/Bilder/pexels-kpaukshtite-4256560.jpg",
-        text: "Ljungan erbjuder fantastiskt fiske efter öring och harr."
+        title: "Fiske i Gissjön",
+        image: "/Bilder/pexels-aedrian-11817547.jpg",
+        text: "Gissjön är en populär plats för fiske, känd för sina goda fångster av abborre, gädda och sik.",
+        lat: 62.507165,
+        lng: 16.207001,
+        mapName: "Fiske i Gissjön",
+        mapText: "Perfekt fiskeplats för både nybörjare och erfarna fiskare, med vackra omgivningar",
+        category: "sport"
     },
     familj: {
-        title: "Familjedag i naturen",
-        image: "/Bilder/pexels-scott-neil-302581859-13608734.jpg",
-        text: "Perfekt för picknick, lek och naturupplevelser."
+        title: "Boda borg inomhusupplevelse",
+        image: "/Bilder/pexels-190703726-29746597.jpg",
+        text: "Perfekt aktivitet för familjen, där ni tillsammans kan lösa kluriga utmaningar och ha kul i en spännande miljö.",
+        lat: 62.457768,
+        lng: 16.377885,
+        mapName: "Boda Borg Torpshammar",
+        mapText: "En rolig och utmanande inomhusupplevelse för hela familjen, med kluriga banor och äventyr att utforska",
+        category: "familj"
     },
     musik: {
-        title: "Musik i Ånge",
-        image: "/Bilder/pexels-roemag-34992091.jpg",
-        text: "Lokala konserter och evenemang året runt."
+        title: "Ånge musiksällskap",
+        image: "/Bilder/pexels-zbigniew-bielecki-102835-1837767.jpg",
+        text: "För dig som redan är musiker och vill utveckla ditt spelande. Ånge musiksällskap spelar tillsammans varje vecka och har konserter och evenemang under året.",
+        lat: 62.525099,
+        lng: 15.660089,
+        mapName: "Ånge musiksällskap",
+        mapText: "Ett levande musiksällskap i Ånge där medlemmarna möts en gång i veckan på medborgarhuset för att spela tillsammans och utveckla sitt musikaliska uttryck.",
+        category: "musik"
     },
     utflykt: {
-        title: "Utflykter i Norrland",
-        image: "/Bilder/pexels-roemag-34992091.jpg",
-        text: "Upptäck fantastiska platser och utsikter."
+        title: "Vandring till Tjärnmyråsstugan",
+        image: "/Bilder/pexels-sanmane-1365428.jpg",
+        text: "Gå från Gammelbodavägen och följ den vackra stigen genom skog och över myrar fram till Tjärnmyråsstugan, en mysig stuga som erbjuder en perfekt paus med fika under vandringen.",
+        lat: 62.530531,
+        lng: 15.638228,
+        mapName: "Vandring till Tjärnmyråsstugan",
+        mapText: "En naturskön vandring genom skog och myrar som leder till Tjärnmyråsstugan, en perfekt plats för en fikapaus och att njuta av den vackra naturen i Ånge kommun.",
+        category: "aktiviteter, natur"
     }
     };
 
@@ -119,7 +139,15 @@ document.addEventListener("DOMContentLoaded", () => {
                     <p>${data[type].text}</p>
                     <div class="activity-expanded">
                         <p>Utforska mer om denna kategori med detaljerade tips och kartan över närliggande platser.</p>
-                        <a href="/Sidor/karta.html" class="map-btn-card">Visa på karta</a>
+                        <a href="/Sidor/karta.html"
+                           class="map-btn-card"
+                           data-lat="${data[type].lat}"
+                           data-lng="${data[type].lng}"
+                           data-name="${data[type].mapName}"
+                           data-text="${data[type].mapText}"
+                           data-category="${data[type].category}">
+                           Visa på karta
+                        </a>
                     </div>
                 </div>
             `;

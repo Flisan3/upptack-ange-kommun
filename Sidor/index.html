@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Upptäck Ånge Kommun</title>
+    <title>Upptäck Ånge</title>
     <link rel="stylesheet" href="/Styling/style.css">
 </head>
 <body class="page-hero">
@@ -47,22 +47,25 @@
             <div class="activity-card" role="button" tabindex="0" aria-expanded="false">
                 <img src="/Bilder/pexels-scott-neil-302581859-13608734.jpg" alt="Natur i Ånge">
 
-                <h3>Vandra i Jämtlandsskogarna</h3>
+                <h3>Spela discgolf på Kapellbacken</h3>
 
                 <p>
-                    Upplev Ånges fantastiska natur med vandringsleder,
-                    sjöar och utsiktsplatser för hela familjen.
+                    En naturskön discgolfbana, perfekt för både nybörjare och erfarna spelare.
+                    Njut av en rolig dag utomhus i Ånge kommuns vackra omgivningar.
                 </p>
 
                 <div class="activity-expanded">
                     <p>
-                        Här kan besökare utforska flera mil av markerade leder,
-                        rastplatser, grillområden och fantastiska utsikter över
-                        det norrländska landskapet. Lederna passar både nybörjare
-                        och erfarna vandrare.
+                        Här kan du och dina vänner spela discgolf i en naturnära miljö. Banan är välskött och erbjuder utmaningar för alla nivåer. Ta med dina egna discar eller låna på gulf och njut av en rolig dag i det fria.
                     </p>
 
-                    <a href="/Sidor/karta.html" class="map-btn-card">
+                    <a href="/Sidor/karta.html"
+                        class="map-btn-card"
+                        data-lat="62.520369"
+                        data-lng="15.670899"
+                        data-name="Discgolf Ånge"
+                        data-text="Spela på discgolfbanan i Ånge"
+                        data-category="sport">
                         Visa på karta
                     </a>
                 </div>
@@ -73,23 +76,21 @@
             <h2>Matrekommendation</h2>
 
             <div class="card activity-card" role="button" tabindex="0" aria-expanded="false">
-                <img src="/Bilder/pexels-kpaukshtite-4256560.jpg" alt="Mat i Ånge">
+                <img src="/Bilder/pexels-magda-ehlers-pexels-33313084.jpg" alt="Mat i Ånge">
 
                 <div class="card-content">
-                    <h3>Lokala smaker</h3>
+                    <h3>Strömmensgårdsmejeri</h3>
 
                     <p>
-                        Testa lokala caféer och restauranger med svensk husmanskost,
-                        nybakat fika och norrländska specialiteter.
+                        Testa deras smakvärda ostar gjorda på lokala råvaror. Perfekt för en picknick eller som del av en måltid.
                     </p>
                 </div>
 
                 <div class="activity-expanded">
                     <p>
-                        Upptäck charmiga matställen med lokala råvaror och norrländska
-                        smaker. Perfekt för lunch, fika och kvällsmåltid under din vistelse.
+                        Upptäck det lokala mejeriet och deras unika sortiment av ostar. Deras produkter är gjorda med omsorg och passion för kvalitet, och erbjuder en smakupplevelse som speglar Ånge kommuns rika jordbrukstradition.
                     </p>
-                    <a href="/Sidor/karta.html" class="map-btn-card">Visa på karta</a>
+                    <a href="/Sidor/karta.html" class="map-btn-card" data-lat="62.517164" data-lng="15.720908" data-name="Strömmensgårdsmejeri" data-text="Strömmensgårdsmejeri - Testa deras smakvärda ostar" data-category="mat">Visa på karta</a>
                 </div>
             </div>
         </section>
@@ -161,6 +162,7 @@
     </footer>
 <script src="/Scripts/index.js"></script>
 <script src="/Scripts/special-nav.js"></script>
-<script src="/Scripts/hero-page.js"></script>   
+<script src="/Scripts/hero-page.js"></script>
+<script src="/Scripts/map-links.js"></script>
 </body>
 </html>
