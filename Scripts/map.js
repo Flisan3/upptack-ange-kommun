@@ -24,6 +24,21 @@ document.querySelectorAll('.location-card[data-lat][data-lng]').forEach(el => {
     }
 });
 
+// Add locations from shared LOCATIONS data if available
+if (typeof LOCATIONS !== 'undefined') {
+    LOCATIONS.forEach(location => {
+        if (Number.isFinite(location.lat) && Number.isFinite(location.lng)) {
+            markerData.push({
+                name: location.name,
+                coords: [location.lat, location.lng],
+                text: location.text,
+                category: (location.category || 'alla').toLowerCase(),
+                domEl: null
+            });
+        }
+    });
+}
+
 // Create Leaflet markers and keep references for filtering.
 const mapMarkers = [];
 
