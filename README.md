@@ -8,7 +8,7 @@ Byggd med hjälp av:
 [Leaflet](https://leafletjs.com)
 
 
-[Pexels]((https://www.pexels.com/sv-se/))
+[Pexels](https://www.pexels.com)
 
 
 [Font Awesome](https://fontawesome.com)
@@ -27,7 +27,7 @@ Hur du startar upp projektet:
 4. Kopiera sedan https länken
 <img width="420" height="175" alt="image" src="https://github.com/user-attachments/assets/00e8986e-2597-400f-9ee7-feb7a5ba0278" />
 
-5. Ladda ned Git och följ instruktionerna [git download](https://git-scm.com/install/windows) 
+5. Ladda ned Git här: [git download](https://git-scm.com/install/windows), och följ instruktionerna
 <img width="993" height="294" alt="image" src="https://github.com/user-attachments/assets/ee016d21-2b23-4636-ae7c-a35253597187" />
 
 6. Öppna visual studio och tryck på source control eller ctrl + shift + g
