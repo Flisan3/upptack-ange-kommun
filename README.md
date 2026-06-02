@@ -50,7 +50,7 @@ Hur du startar upp projektet:
 <img width="496" height="715" alt="image" src="https://github.com/user-attachments/assets/695dc072-747a-46f6-a2da-93772e89cc44" />
 
 
-
+Nu bör du kunna utforska mitt projekt. Tack för att du testar min webbsida!
 
 
 
