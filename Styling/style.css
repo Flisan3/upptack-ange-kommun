@@ -298,6 +298,7 @@ section h2{
     max-width:none;
     padding:0;
     transition:grid-template-columns 0.35s ease;
+    grid-template-columns:minmax(260px, 20%) 1fr;
 }
 
 .activities-layout.closed{
@@ -458,7 +459,7 @@ section h2{
 
 .activity-grid{
     display:grid;
-    grid-template-columns:repeat(4,minmax(240px,1fr));
+    grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));
     gap:25px;
     align-items:start;
 }
@@ -566,6 +567,7 @@ section h2{
     font-size:18px;
     opacity:0.9;
 }
+
 
 .food-feature{
     display:grid;
@@ -736,11 +738,21 @@ section h2{
 .food-hero{
     position: relative;
     padding:120px 0 60px;
-    background: url("/Bilder/pexels-rachel-claire-4992640.jpg");
+    background: url("/Bilder/pexels-cihanyuce-12181750.jpg");
     background-size: cover;
     background-position: center;
     color: var(--bg);
     text-align: center;
+    height: 550px;
+}
+
+.food-hero-content{
+    padding: 100px;
+}
+
+.food-grid img{
+    max-height: 300px;
+    border-radius: 15px;
 }
 
 .events-hero{
@@ -1017,6 +1029,7 @@ footer{
     box-shadow:0 10px 25px rgba(0,0,0,0.08);
     width:100%;
     max-width:700px;
+    transition: max-width 0.3s ease;
 }
 
 .contact-icon{
@@ -1263,19 +1276,6 @@ body.reveal .hero-content {
     transform: translateY(30px);
 }
 
-body.lock-scroll {
-    overflow: hidden;
-    height: 100vh;
-}
-
-.hero {
-    transition: height 0.8s ease, transform 0.8s ease;
-}
-
-body.reveal .hero {
-    height: 60vh;
-}
-
 .hero-btn {
     transition: opacity 0.3s ease, transform 0.3s ease;
 }
@@ -1341,7 +1341,6 @@ body.reveal .hero-btn {
 .categories{
     display:flex;
     gap:15px;
-    transition:all .4s ease;
 }
 
 .category-card{
@@ -1415,18 +1414,8 @@ body.reveal .hero-btn {
 }
 
 @keyframes fadeIn{
-    from{
-        opacity:0;
-        transform:translateY(20px);
-    }
-    to{
-        opacity:1;
-        transform:translateY(0);
-    }
-}
-
-.map-btn-card:hover{
-    background:var(--primary);
+    from{opacity:0; transform:translateY(20px);}
+    to{opacity:1; transform:translateY(0);}
 }
 
 @media(max-width:900px){
@@ -1464,7 +1453,7 @@ body.reveal .hero-btn {
     }
 
     .activity-grid{
-        flex-direction:column;
+        grid-template-columns:repeat(4,minmax(240px,1fr));
     }
 
     .food-grid,
@@ -1484,45 +1473,13 @@ body.reveal .hero-btn {
         align-items:flex-start;
     }
 
-    .event-date{
-        width:100%;
-        height:auto;
-        padding:20px;
-        flex-direction:row;
-        gap:10px;
-    }
-
-    .event-date .month{
-        margin-top:0;
-    }
-
     .contact-info-section{
         grid-template-columns:1fr;
     }
 
-    .map-container{ 
-        grid-template-columns:1fr; 
-    } 
-        
-    .map-locations{ 
-        grid-template-columns:1fr; 
-    } 
-    
-    #map{ 
-        height:500px; 
+    .map-container{
+        grid-template-columns:1fr;
     }
-
-    .filter-sidebar{
-        position:relative;
-        top:0;
-        min-height:auto;
-        border-radius:20px;
-    }
-
-    .filter-panel.closed .filter-sidebar{
-        display:none;
-    }
-
 }
 
 @media(max-width:600px){
@@ -1547,33 +1504,25 @@ body.reveal .hero-btn {
         font-size:16px;
     }
 
-    .events-hero-content{
-        -webkit-text-fill-color: #f4f6f3;
-    }
-
     .categories{
         grid-template-columns:1fr;
     }
 
-    .card img{
-        height:220px;
-    }
-
-    .event-card,
-    .contact-card{
-        padding:20px;
-    }
-
-    .event-content h3{
-        font-size:22px;
-    }
-
-    .map-main{ 
-        padding-top:170px; 
-    } 
-    
-    #map{ 
-        height:400px; 
+    #map{
+        height:400px;
     }
 }
 
+@media (min-width:1400px){
+    .contact-card{
+        max-width: 850px;
+        padding: 50px;
+    }
+}
+
+@media (min-width:1800px){
+    .contact-card{
+        max-width: 950px;
+        padding: 60px;
+    }
+}
