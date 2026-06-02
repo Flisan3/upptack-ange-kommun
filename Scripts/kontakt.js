@@ -1,7 +1,9 @@
+// Hanterar validering och interaktion för kontaktformuläret
 document.addEventListener('DOMContentLoaded', () => {
   const form = document.querySelector('.contact-form');
   if (!form) return;
 
+  // Definiera fält och deras valideringsregler
   const fields = [
     {
       name: 'name',
@@ -25,8 +27,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   ];
 
+  // Funktioner för att visa och rensa felmeddelanden
   const getFormGroup = element => element.closest('.form-group');
 
+  // Funktion för att visa ett felmeddelande för ett specifikt inputfält
   const showError = (input, message) => {
     const group = getFormGroup(input);
     if (!group) return;
@@ -37,6 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   };
 
+  // Funktion för att rensa felmeddelanden när användaren börjar skriva
   const clearError = input => {
     const group = getFormGroup(input);
     if (!group) return;
@@ -47,11 +52,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   };
 
+  // Event listener för att hantera formulärets submit-event och validera fälten
   form.addEventListener('submit', event => {
     event.preventDefault();
 
     let isValid = true;
 
+    // Validera varje fält och visa felmeddelanden vid behov
     fields.forEach(({ name, validator, message }) => {
       const input = form.querySelector(`[name="${name}"]`);
       const value = input ? input.value : '';
@@ -67,6 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
+    // Simulera formulärskickning och visa en framgångsmeddelande
     form.reset();
     const success = document.createElement('p');
     success.className = 'form-success';
@@ -75,6 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => success.remove(), 5000);
   });
 
+  // Lägg till event listeners för att rensa felmeddelanden när användaren börjar skriva i något av fälten
   form.querySelectorAll('input, textarea').forEach(input => {
     input.addEventListener('input', () => clearError(input));
   });

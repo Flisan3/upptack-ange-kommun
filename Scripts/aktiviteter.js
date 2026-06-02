@@ -1,76 +1,83 @@
 document.addEventListener("DOMContentLoaded", () => {
 
+    // Constanter för att hämta element från DOM:en
     const form = document.querySelector(".filter-form");
     const filterPanel = document.querySelector(".filter-panel");
     const mainLayout = document.querySelector(".activities-layout");
     const toggleButton = document.querySelector(".filter-toggle");
     const cards = document.querySelectorAll(".activity-card");
 
+    // Event listener för att hantera filterpanelen och dess responsivitet
     if (toggleButton && filterPanel && mainLayout) {
         toggleButton.addEventListener("click", () => {
-            const isClosed = filterPanel.classList.toggle("closed");
-            mainLayout.classList.toggle("closed", isClosed);
-            toggleButton.setAttribute("aria-expanded", String(!isClosed));
-            toggleButton.setAttribute("aria-label", isClosed ? "Visa filter" : "Dölj filter");
-            toggleButton.textContent = isClosed ? "Visa" : "Dölj filter";
-        });
-    }
+            const isMobile = window.innerWidth <= 900;
 
-    function filterCards() {
-
-        const category = form.querySelector("select[name='category']").value.toLowerCase();
-        const location = form.querySelector("select[name='location']").value.toLowerCase();
-        const search = form.querySelector("input[name='search']").value.toLowerCase();
-
-        cards.forEach(card => {
-
-            const cardCategory = card.dataset.category;
-            const cardLocation = card.dataset.location;
-
-            const text = card.innerText.toLowerCase();
-
-            const matchCategory =
-                category === "alla" || category === "" || cardCategory === category;
-
-            const matchLocation =
-                location === "alla" || location === "" || cardLocation === location;
-
-            const matchSearch =
-                text.includes(search);
-
-            if (matchCategory && matchLocation && matchSearch) {
-                card.style.display = "block";
+            // För mobila enheter, öppna eller stäng filterpanelen och justera layouten
+            if (isMobile) {
+                filterPanel.classList.remove("closed");
+                mainLayout.classList.remove("closed");
+                const isOpen = filterPanel.classList.toggle("open");
+                toggleButton.textContent = isOpen ? "Dölj filter" : "Visa filter";
+                toggleButton.setAttribute("aria-expanded", String(isOpen));
+            // Stäng filter
             } else {
-                card.style.display = "none";
+                filterPanel.classList.remove("open");
+                const isClosed = filterPanel.classList.toggle("closed");
+                mainLayout.classList.toggle("closed", isClosed);
+                toggleButton.textContent = isClosed ? "Visa filter" : "Dölj filter";
+                toggleButton.setAttribute("aria-expanded", String(!isClosed));
             }
         });
     }
 
+    // Funktion för att filtrera korten baserat på valda kriterier
+    function filterCards() {
+        const category = form.querySelector("select[name='category']").value.toLowerCase();
+        const location = form.querySelector("select[name='location']").value.toLowerCase();
+        const search = form.querySelector("input[name='search']").value.toLowerCase();
+
+        // Filtrera korten baserat på valda kriterier
+        cards.forEach(card => {
+            const cardCategory = card.dataset.category;
+            const cardLocation = card.dataset.location;
+            const text = card.innerText.toLowerCase();
+
+            // Kontrollera om kortet matchar de valda kriterierna
+            const matchCategory = category === "alla" || category === "" || cardCategory === category;
+            const matchLocation = location === "alla" || location === "" || cardLocation === location;
+            const matchSearch = text.includes(search);
+
+            // Visa eller dölj kortet baserat på om det matchar kriterierna
+            card.style.display = (matchCategory && matchLocation && matchSearch) ? "block" : "none";
+        });
+    }
+
+    // Event listener för att hantera formulärets submit-event och filtrera korten
     form.addEventListener("submit", (e) => {
         e.preventDefault();
         filterCards();
     });
 
-    // Remove live filtering; apply filters only when user clicks "Filtrera".
-    const resetBtn = document.querySelector('.filter-reset');
+    // Event listener för att hantera reset-knappen och återställa alla filter
+    const resetBtn = document.querySelector(".filter-reset");
     if (resetBtn) {
-        resetBtn.addEventListener('click', () => {
-            const selects = form.querySelectorAll('select');
-            selects.forEach(s => s.value = 'alla');
-            const search = form.querySelector('input[name="search"]');
-            if (search) search.value = '';
+        resetBtn.addEventListener("click", () => {
+            form.querySelectorAll("select").forEach(s => s.value = "alla");
+            const search = form.querySelector("input[name='search']");
+            if (search) search.value = "";
             filterCards();
         });
     }
 
+    // Event listeners för att hantera klick och tangenttryckningar på korten för att expandera och visa mer information
     cards.forEach(card => {
         card.addEventListener("click", (event) => {
-            if (event.target.closest(".map-btn-card")) {
-                return;
-            }
+            if (event.target.closest(".map-btn-card")) return;
 
+            // Toggle "expanded" classen på det klickade kortet och stäng andra kort
             const isExpanded = card.classList.toggle("expanded");
 
+            // Stäng alla andra kort när ett kort expanderas
             cards.forEach(other => {
                 if (other !== card) {
                     other.classList.remove("expanded");
@@ -78,9 +85,11 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
             });
 
-            card.setAttribute("aria-expanded", isExpanded ? "true" : "false");
+            // Uppdatera aria-expanded attributet för det klickade kortet
+            card.setAttribute("aria-expanded", String(isExpanded));
         });
 
+        // Lägg till tangentbordsnavigering för att expandera korten med Enter eller mellanslag
         card.addEventListener("keydown", (event) => {
             if (event.key === "Enter" || event.key === " ") {
                 event.preventDefault();

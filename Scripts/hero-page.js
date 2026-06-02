@@ -1,39 +1,50 @@
+// Script för att hantera interaktionen på hero-sidan, inklusive att låsa scrollning och visa en avslöjande animation när knappen klickas
 document.addEventListener("DOMContentLoaded", () => {
     const button = document.querySelector(".hero-btn");
     const body = document.body;
 
+    // Lås scrollning när sidan laddas
     body.classList.add("lock-scroll");
 
+    // Event listener för att hantera klick på knappen och visa avslöjande animation
     button.addEventListener("click", (e) => {
         e.preventDefault();
         body.classList.add("reveal");
 
+        // Ta bort lock scroll efter en kort fördröjning för att tillåta scrollning igen
         setTimeout(() => {
             body.classList.remove("lock-scroll");
         }, 800);
     });
 });
 
+// Förhindra att webbläsaren automatiskt återställer scrollpositionen när användaren navigerar tillbaka till sidan 
+// för att förhindra att sidan låser sig i en oönskad scrollposition.
 if ('scrollRestoration' in history) {
     history.scrollRestoration = 'manual';
 }
 
+// Se till att sidan alltid startar i toppen när den laddas
 window.addEventListener('load', () => {
     window.scrollTo(0, 0);
 });
 
+// Funktion för att initialisera interaktionen på ett aktivitetkort, inklusive att expandera och visa mer information
 function initializeActivityCard(card) {
     if (!card) return;
 
+    // Lägg till aria attribut för att förbättra tillgängligheten
     if (!card.hasAttribute("role")) card.setAttribute("role", "button");
     if (!card.hasAttribute("tabindex")) card.setAttribute("tabindex", "0");
     if (!card.hasAttribute("aria-expanded")) card.setAttribute("aria-expanded", "false");
 
+    // Förhindra att klick på kartknappen expanderar kortet
     card.addEventListener("click", (e) => {
         if (e.target.closest(".map-btn-card")) {
             return;
         }
 
+        // Toggle "expanded" classen på det klickade kortet och stäng andra kort
         document.querySelectorAll(".activity-card").forEach(other => {
             if (other !== card) {
                 other.classList.remove("expanded");
@@ -41,10 +52,12 @@ function initializeActivityCard(card) {
             }
         });
 
+        // Toggle "expanded" classen på det klickade kortet och uppdatera aria-expanded attributet
         const isExpanded = card.classList.toggle("expanded");
         card.setAttribute("aria-expanded", isExpanded ? "true" : "false");
     });
 
+    // Lägg till tangentbordsnavigering för att expandera korten med Enter eller mellanslag
     card.addEventListener("keydown", (event) => {
         if (event.key === "Enter" || event.key === " ") {
             event.preventDefault();
@@ -53,6 +66,7 @@ function initializeActivityCard(card) {
     });
 }
 
+// Initialisera interaktionen på alla aktivitetkort när sidan laddas
 document.addEventListener("DOMContentLoaded", () => {
 
     const cards = document.querySelectorAll(".activity-card");
@@ -61,17 +75,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
 });
 
+// Event listener för att hantera klick på kartknappen och visa platsen på kartan
 document.addEventListener("DOMContentLoaded", () => {
 
+    // Lägg till event listener på alla kartknappar
     const cards = document.querySelectorAll(".category-card");
     const result = document.getElementById("category-result");
 
+    // Lägg till aria-attributet för att förbättra tillgängligheten
     cards.forEach(card => {
         if (!card.hasAttribute("role")) card.setAttribute("role", "button");
         if (!card.hasAttribute("tabindex")) card.setAttribute("tabindex", "0");
         if (!card.hasAttribute("aria-expanded")) card.setAttribute("aria-expanded", "false");
     });
 
+    // Data för varje snabbkategori, inklusive titel, bild, text och kartinformation
    const data = {
     fiske: {
         title: "Fiske i Gissjön",
@@ -116,12 +134,15 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
 
+    // Event listener för att hantera klick på varje kort och visa detaljerad information i result-sektionen
     cards.forEach(card => {
 
+        // Förhindra att klick på kartknappen expanderar kortet
         card.addEventListener("click", () => {
 
             const type = card.dataset.category;
 
+            // Ta bort "active" och "inactive" klasser från alla kort och lägg till "inactive" på alla andra kort än det klickade
             cards.forEach(c => {
                 c.classList.remove("active", "inactive");
                 c.setAttribute("aria-expanded", "false");
@@ -129,9 +150,11 @@ document.addEventListener("DOMContentLoaded", () => {
                 if (c !== card) c.classList.add("inactive");
             });
 
+            // Lägg till "active" klassen på det klickade kortet och uppdatera aria-expanded attributet
             card.classList.add("active");
             card.setAttribute("aria-expanded", "true");
 
+            // Uppdatera result-sektionen med detaljerad information baserat på det klickade kortets kategori
             result.innerHTML = `
                 <div class="category-activity activity-card" role="button" tabindex="0" aria-expanded="false">
                     <img src="${data[type].image}" alt="${data[type].title}">
@@ -152,10 +175,12 @@ document.addEventListener("DOMContentLoaded", () => {
                 </div>
             `;
 
+            // Initialisera interaktionen på det nya aktivitetkortet i result-sektionen
             const resultCard = result.querySelector('.activity-card');
             initializeActivityCard(resultCard);
         });
 
+        // Lägg till tangentbordsnavigering för att aktivera korten med Enter eller mellanslag
         card.addEventListener("keydown", (event) => {
             if (event.key === "Enter" || event.key === " ") {
                 event.preventDefault();

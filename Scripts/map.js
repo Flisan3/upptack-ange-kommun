@@ -1,89 +1,170 @@
+// Initialisera kartan med OpenStreetMap och Leaflet
 const map = L.map('map').setView([62.5247, 15.6594], 9);
 
-L.tileLayer(
-    'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-    {
-        attribution: '&copy; OpenStreetMap'
-    }
-).addTo(map);
+// Lägg till OpenStreetMap tile layer
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; OpenStreetMap'
+}).addTo(map);
 
-// Collect marker data from DOM `.location-card` elements.
-const markerData = [];
+const mapMarkers = [];
 
-document.querySelectorAll('.location-card[data-lat][data-lng]').forEach(el => {
-    const lat = parseFloat(el.dataset.lat);
-    const lng = parseFloat(el.dataset.lng);
-    if (Number.isFinite(lat) && Number.isFinite(lng)) {
-        markerData.push({
-            name: el.dataset.name || el.querySelector('h3')?.innerText || 'Plats',
-            coords: [lat, lng],
-            text: el.dataset.text || el.querySelector('p')?.innerText || '',
+// Skapar och lägger till en markör på kartan
+function addMarker(data) {
+    // Skapar Leaflet markören baserat på koordinater
+    const marker = L.marker(data.coords)
+        .addTo(map)
+        // Popup som visas när man klickar på markören
+        .bindPopup(`<h3>${data.name}</h3><p>${data.text}</p>`);
+
+    // Sparar både markören och dess data så de kan filtreras senare
+    mapMarkers.push({ marker, data });
+}
+
+// Läser in markörer från HTML som redan finns på sidan
+function loadFromDOM() {
+    document.querySelectorAll('.map-btn-card[data-lat][data-lng]').forEach(el => {
+        const lat = parseFloat(el.dataset.lat);
+        const lng = parseFloat(el.dataset.lng);
+
+        // Om koordinaterna inte är siffror så hoppas elementet över
+        if (!Number.isFinite(lat) || !Number.isFinite(lng)) return;
+
+        // Skickar vidare datan till addMarker så allt hanteras likadant
+        addMarker({
+            name: el.dataset.name || 'Plats',
+            text: el.dataset.text || '',
             category: (el.dataset.category || 'alla').toLowerCase(),
-            domEl: el
+            coords: [lat, lng]
         });
-    }
-});
-
-// Add locations from shared LOCATIONS data if available
-if (typeof LOCATIONS !== 'undefined') {
-    LOCATIONS.forEach(location => {
-        if (Number.isFinite(location.lat) && Number.isFinite(location.lng)) {
-            markerData.push({
-                name: location.name,
-                coords: [location.lat, location.lng],
-                text: location.text,
-                category: (location.category || 'alla').toLowerCase(),
-                domEl: null
-            });
-        }
     });
 }
 
-// Create Leaflet markers and keep references for filtering.
-const mapMarkers = [];
+// Hämtar data från andra HTML-sidor och plockar ut markörer därifrån
+async function loadFromPage(url) {
+    try {
+        // Hämtar sidan som ren HTML-text
+        const res = await fetch(url);
+        const html = await res.text();
 
-markerData.forEach(data => {
-    const marker = L.marker(data.coords).addTo(map).bindPopup(`<h3>${data.name}</h3><p>${data.text}</p>`);
-    mapMarkers.push({ marker, data });
-});
+        // Gör om HTML-strängen till ett DOM-träd så querySelector fungerar
+        const doc = new DOMParser().parseFromString(html, 'text/html');
 
-// Helper to show a specific location and open its popup
-function showLocation(coords, name, text, zoom = 15) {
+        // Letar upp alla kartknappar i sidan
+        doc.querySelectorAll('.map-btn-card[data-lat][data-lng]').forEach(el => {
+            const lat = parseFloat(el.dataset.lat);
+            const lng = parseFloat(el.dataset.lng);
+
+            // Hoppar över om data är trasig eller saknas
+            if (!Number.isFinite(lat) || !Number.isFinite(lng)) return;
+
+            // Lägger till markören precis som på nuvarande sida
+            addMarker({
+                name: el.dataset.name || 'Plats',
+                text: el.dataset.text || '',
+                category: (el.dataset.category || 'alla').toLowerCase(),
+                coords: [lat, lng]
+            });
+        });
+
+    } catch (err) {
+        // Om sidan inte går att hämta eller parsea loggas bara en varning
+        console.warn('Kunde inte ladda:', url, err);
+    }
+}
+
+// Flyttar kartan till en specifik plats och visar popup
+function showLocation(coords, name = '', text = '', zoom = 15) {
+    // Centrerar kartan på vald position
     map.setView(coords, zoom);
-    // find marker at coords and open popup if exists
-    const found = mapMarkers.find(m => Math.abs(m.data.coords[0] - coords[0]) < 0.0001 && Math.abs(m.data.coords[1] - coords[1]) < 0.0001);
+
+    // Försöker hitta en redan existerande markör med exakt samma koordinater
+    const found = mapMarkers.find(m =>
+        Math.abs(m.data.coords[0] - coords[0]) < 0.0001 &&
+        Math.abs(m.data.coords[1] - coords[1]) < 0.0001
+    );
+
     if (found) {
+        // Om markören redan finns öppnas dess popup
         found.marker.openPopup();
     } else {
-        // temporary marker
-        const tmp = L.marker(coords).addTo(map).bindPopup(`<h3>${name || ''}</h3><p>${text || ''}</p>`);
+        // Annars skapas en tillfällig markör bara för visning
+        const tmp = L.marker(coords)
+            .addTo(map)
+            .bindPopup(`<h3>${name}</h3><p>${text}</p>`);
+
         tmp.openPopup();
+
+        // Tar bort den tillfälliga markören efter några sekunder
         setTimeout(() => map.removeLayer(tmp), 8000);
     }
 }
 
-// Read URL parameters to center on a specific place when provided.
+// Läser URL-parametrar för att kunna öppna en plats direkt
 const params = new URLSearchParams(window.location.search);
+
 if (params.has('lat') && params.has('lng')) {
     const lat = parseFloat(params.get('lat'));
     const lng = parseFloat(params.get('lng'));
-    const name = params.get('name') ? decodeURIComponent(params.get('name')) : '';
-    const text = params.get('text') ? decodeURIComponent(params.get('text')) : '';
+
+    // Säkerställer att koordinaterna är giltiga
     if (Number.isFinite(lat) && Number.isFinite(lng)) {
-        showLocation([lat, lng], name, text, params.has('zoom') ? parseInt(params.get('zoom'), 10) : 15);
+        showLocation(
+            [lat, lng],
+            params.get('name') ? decodeURIComponent(params.get('name')) : '',
+            params.get('text') ? decodeURIComponent(params.get('text')) : '',
+            params.has('zoom') ? parseInt(params.get('zoom'), 10) : 15
+        );
     }
 }
 
-// Map filter & search UI
-const mapBtns = document.querySelectorAll('.map-buttons .map-btn');
-const searchInput = document.querySelector('.map-search input');
+// Hanterar klick på “Visa på karta” knappar
+document.addEventListener('click', (e) => {
+    const el = e.target.closest('.map-btn-card[data-lat][data-lng]');
+    if (!el) return;
 
-function updateMarkers(filterCat, searchText) {
-    const lowerSearch = (searchText || '').toLowerCase();
+    e.preventDefault();
+
+    const lat = parseFloat(el.dataset.lat);
+    const lng = parseFloat(el.dataset.lng);
+
+    // Säkerställer att det inte kraschar om data saknas
+    if (!Number.isFinite(lat) || !Number.isFinite(lng)) return;
+
+    showLocation([lat, lng], el.dataset.name, el.dataset.text);
+});
+
+// Uppdaterar vilka markörer som visas baserat på filter och sök
+function updateMarkers() {
+    const categoryEl = document.querySelector('.map-btn.active');
+    const searchInput = document.querySelector('.map-search input');
+
+    // Vilken kategori som är vald
+    const activeCategory =
+        categoryEl?.textContent?.trim().toLowerCase() || 'alla';
+
+    // Vad användaren har skrivit i sökfältet
+    const searchValue =
+        searchInput?.value.trim().toLowerCase() || '';
+
     mapMarkers.forEach(({ marker, data }) => {
-        const matchesCat = !filterCat || filterCat === 'alla' || (data.category && data.category.toLowerCase() === filterCat.toLowerCase());
-        const matchesSearch = !lowerSearch || (data.name && data.name.toLowerCase().includes(lowerSearch)) || (data.text && data.text.toLowerCase().includes(lowerSearch));
-        if (matchesCat && matchesSearch) {
+        const category = (data.category || 'alla').toLowerCase();
+
+        // Slår ihop namn och text så sökning kan ske i båda
+        const text =
+            (data.name + ' ' + data.text).toLowerCase();
+
+        // Kollar om markören matchar vald kategori
+        const matchesCategory =
+            activeCategory === 'alla' || category === activeCategory;
+
+        // Kollar om markören matchar sökordet
+        const matchesSearch =
+            searchValue === '' || text.includes(searchValue);
+
+        const visible = matchesCategory && matchesSearch;
+
+        // Visar eller gömmer markören beroende på filter
+        if (visible) {
             if (!map.hasLayer(marker)) marker.addTo(map);
         } else {
             if (map.hasLayer(marker)) map.removeLayer(marker);
@@ -91,34 +172,30 @@ function updateMarkers(filterCat, searchText) {
     });
 }
 
-// Wire up filter buttons
-mapBtns.forEach(btn => {
+// Kategoriknapparna styr filtret
+document.querySelectorAll('.map-btn').forEach(btn => {
     btn.addEventListener('click', () => {
-        mapBtns.forEach(b => b.classList.remove('active'));
+        // Tar bort active från alla knappar
+        document.querySelectorAll('.map-btn')
+            .forEach(b => b.classList.remove('active'));
+
+        // Sätter active på den klickade knappen
         btn.classList.add('active');
-        const cat = btn.innerText.trim().toLowerCase();
-        updateMarkers(cat === 'alla' ? 'alla' : cat, searchInput?.value || '');
+
+        // Uppdaterar kartan direkt
+        updateMarkers();
     });
 });
 
-// Wire up search
+// Sökfältet uppdaterar kartan medan man skriver
+const searchInput = document.querySelector('.map-search input');
+
 if (searchInput) {
-    searchInput.addEventListener('input', () => {
-        const activeBtn = document.querySelector('.map-buttons .map-btn.active');
-        const cat = activeBtn ? activeBtn.innerText.trim().toLowerCase() : 'alla';
-        updateMarkers(cat === 'alla' ? 'alla' : cat, searchInput.value);
-    });
+    searchInput.addEventListener('input', updateMarkers);
 }
 
-// Clicking a location card centers the map
-document.querySelectorAll('.location-card[data-lat][data-lng]').forEach(el => {
-    el.style.cursor = 'pointer';
-    el.addEventListener('click', () => {
-        const lat = parseFloat(el.dataset.lat);
-        const lng = parseFloat(el.dataset.lng);
-        showLocation([lat, lng], el.dataset.name, el.dataset.text);
-    });
-});
-
-// Initialize markers (show all)
-updateMarkers('alla', '');
+// Laddar data från DOM och sidor
+loadFromDOM();
+loadFromPage('/Sidor/aktiviteter.html');
+loadFromPage('/Sidor/mat.html');
+loadFromPage('/Sidor/evenemang.html');

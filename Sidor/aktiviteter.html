@@ -5,176 +5,178 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aktiviteter</title>
     <link rel="stylesheet" href="/Styling/style.css">
+    <meta name="description" content="Upptäck alla aktiviteter i Ånge kommun, natur, kultur, sport och familjeaktiviteter. Hitta roliga saker att göra året runt!">
 </head>
 
-<body class="page-light">
+    <body class="page-light">
 
-    <nav>
-        <div class="logo">
-            <a href="/Sidor/index.html"><span>Upptäck</span> <span class="logo-accent">Ånge</span></a>
-        </div>
-
-        <ul>
-            <li><a href="/Sidor/index.html">Hem</a></li>
-            <li><a href="/Sidor/aktiviteter.html">Aktiviteter</a></li>
-            <li><a href="/Sidor/mat.html">Mat</a></li>
-            <li><a href="/Sidor/evenemang.html">Evenemang</a></li>
-            <li><a href="/Sidor/karta.html">Karta</a></li>
-            <li><a href="/Sidor/kontakt.html">Kontakt</a></li>
-        </ul>
-    </nav>
-
-    <main class="activities-layout">
-
-        <div class="filter-panel">
-            <button type="button" class="filter-toggle" aria-expanded="true">Dölj filter</button>
-
-            <aside class="filter-sidebar">
-
-                <h2>Filtrera</h2>
-
-        <form class="filter-form">
-
-            <div class="filter-group">
-                <label for="category-filter">Kategori</label>
-
-                <select id="category-filter" name="category">
-                    <option value="alla">Alla</option>
-                    <option value="natur">Natur</option>
-                    <option value="kultur">Kultur</option>
-                    <option value="sport">Sport</option>
-                    <option value="familj">Familj</option>
-                </select>
+        <nav>
+            <div class="logo">
+                <a href="/Sidor/index.html"><span>Upptäck</span> <span class="logo-accent">Ånge</span></a>
             </div>
 
-            <div class="filter-group">
-                <label for="location-filter">Plats</label>
+            <ul>
+                <li><a href="/Sidor/index.html">Hem</a></li>
+                <li><a href="/Sidor/aktiviteter.html">Aktiviteter</a></li>
+                <li><a href="/Sidor/mat.html">Mat</a></li>
+                <li><a href="/Sidor/evenemang.html">Evenemang</a></li>
+                <li><a href="/Sidor/karta.html">Karta</a></li>
+                <li><a href="/Sidor/kontakt.html">Kontakt</a></li>
+            </ul>
+        </nav>
 
-                <select id="location-filter" name="location">
-                    <option value="alla">Alla</option>
-                    <option value="ange">Ånge</option>
-                    <option value="fransta">Fränsta</option>
-                    <option value="ljungaverk">Ljungaverk</option>
-                </select>
+        <main class="activities-layout">
+
+            <div class="filter-panel">
+                <button type="button" class="filter-toggle" aria-expanded="true">Dölj filter</button>
+
+                <aside class="filter-sidebar">
+
+                    <h2>Filtrera</h2>
+
+            <form class="filter-form">
+
+                <div class="filter-group">
+                    <label for="category-filter">Kategori</label>
+
+                    <select id="category-filter" name="category">
+                        <option value="alla">Alla</option>
+                        <option value="natur">Natur</option>
+                        <option value="kultur">Musik</option>
+                        <option value="sport">Sport</option>
+                        <option value="familj">Familj</option>
+                        <option value="familj">Mat</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <label for="location-filter">Plats</label>
+
+                    <select id="location-filter" name="location">
+                        <option value="alla">Alla</option>
+                        <option value="ange">Ånge</option>
+                        <option value="fransta">Boltjärn</option>
+                        <option value="ljungaverk">Torpshammar</option>
+                        <option value="ljungaverk">Gissjö</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <label for="search-filter">Sök</label>
+
+                    <input id="search-filter" name="search" type="text" placeholder="Sök aktivitet...">
+                </div>
+
+                <div class="filter-actions">
+                    <button type="submit" class="filter-apply">
+                        Filtrera
+                    </button>
+                    <button type="button" class="filter-reset">
+                        Återställ
+                    </button>
+                </div>
+
+            </form>
+
+        </aside>
             </div>
+        <section class="activities-content container">
 
-            <div class="filter-group">
-                <label for="search-filter">Sök</label>
+            <h2>Alla aktiviteter</h2>
 
-                <input id="search-filter" name="search" type="text" placeholder="Sök aktivitet...">
-            </div>
+            <div class="activity-grid">
+                
+                <div class="activity-card" role="button" tabindex="0" aria-expanded="false" data-category="sport" data-location="ange">
+                    <img src="/Bilder/pexels-scott-neil-302581859-13608734.jpg" alt="En disc som ligger mot gräset">
+                    <h3>Spela discgolf på Kapellbacken</h3>
+                    <p>En naturskön discgolfbana, perfekt för både nybörjare och erfarna spelare. Njut av en rolig dag utomhus i Ånge kommuns vackra omgivningar.</p>
+                    <div class="activity-expanded">
+                        <p>Här kan du och dina vänner spela discgolf i en naturnära miljö. Banan är välskött och erbjuder utmaningar för alla nivåer. Ta med dina egna discar eller låna på golf och njut av en rolig dag i det fria.</p>
+                        <a href="/Sidor/karta.html" class="map-btn-card" data-lat="62.520369" data-lng="15.670899" data-name="Discgolf Ånge" data-text="Spela på discgolfbanan i Ånge" data-category="sport">Visa på karta</a>
+                    </div>
+                </div>
 
-            <div class="filter-actions">
-                <button type="submit" class="filter-apply">
-                    Filtrera
-                </button>
-                <button type="button" class="filter-reset">
-                    Återställ
-                </button>
-            </div>
+                <div class="activity-card" role="button" tabindex="0" aria-expanded="false" data-category="mat" data-location="boltjarn">
+                    <img src="/Bilder/pexels-magda-ehlers-pexels-33313084.jpg" alt="Ostar från Strömmens gårdsmejeri som lagras">
+                    <h3>Strömmens gårdsmejeri</h3>
+                    <p>Testa deras smakvärda ostar gjorda på lokala råvaror. Perfekt för en picknick eller som del av en måltid.</p>
+                    <div class="activity-expanded">
+                        <p>Upptäck det lokala mejeriet och deras unika sortiment av ostar. Deras produkter är gjorda med omsorg och passion för kvalitet, och erbjuder en smakupplevelse som speglar Ånge kommuns rika jordbrukstradition.</p>
+                        <a href="/Sidor/karta.html" class="map-btn-card" data-lat="62.517164" data-lng="15.720908" data-name="Strömmens gårdsmejeri" data-text="Strömmens gårdsmejeri - Testa deras smakvärda ostar" data-category="mat">Visa på karta</a>
+                    </div>
+                </div>
 
-        </form>
+                <div class="activity-card" role="button" tabindex="0" aria-expanded="false" data-category="sport" data-location="gissjö">
+                    <img src="/Bilder/pexels-aedrian-11817547.jpg" alt="Gissjön och skogen runt omkring">
+                    <h3>Fiske i Gissjön</h3>
+                    <p>Gissjön är en populär plats för fiske, känd för sina goda fångster av abborre, gädda och sik.</p>
+                    <div class="activity-expanded">
+                        <p>Perfekt fiskeplats för både nybörjare och erfarna fiskare, med vackra omgivningar. Ta med ditt spö och njut av fiskelyckan tillsammans med familjen eller vänner.</p>
+                        <a href="/Sidor/karta.html" class="map-btn-card" data-lat="62.507165" data-lng="16.207001" data-name="Fiske i Gissjön" data-text="Perfekt fiskeplats för både nybörjare och erfarna fiskare, med vackra omgivningar" data-category="natur">Visa på karta</a>
+                    </div>
+                </div>
 
-    </aside>
-        </div>
-    <section class="activities-content container">
+                <div class="activity-card" role="button" tabindex="0" aria-expanded="false" data-category="familj" data-location="torpshammar">
+                    <img src="/Bilder/pexels-190703726-29746597.jpg" alt="Lasrar som skiner mot kameran">
+                    <h3>Boda borg inomhusupplevelse</h3>
+                    <p>Perfekt aktivitet för familjen, där ni tillsammans kan lösa kluriga utmaningar och ha kul i en spännande miljö.</p>
+                    <div class="activity-expanded">
+                        <p>En rolig och utmanande inomhusupplevelse för hela familjen, med kluriga banor och äventyr att utforska. En perfekt dag på Boda Borg Torpshammar.</p>
+                        <a href="/Sidor/karta.html" class="map-btn-card" data-lat="62.457768" data-lng="16.377885" data-name="Boda Borg Torpshammar" data-text="En rolig och utmanande inomhusupplevelse för hela familjen, med kluriga banor och äventyr att utforska" data-category="familj">Visa på karta</a>
+                    </div>
+                </div>
 
-        <h2>Alla aktiviteter</h2>
+                <div class="activity-card" role="button" tabindex="0" aria-expanded="false" data-category="musik" data-location="ange">
+                    <img src="/Bilder/pexels-zbigniew-bielecki-102835-1837767.jpg" alt="En cellist som spelar i en konsertsal">
+                    <h3>Ånge musiksällskap</h3>
+                    <p>För dig som redan är musiker och vill utveckla ditt spelande. Ånge musiksällskap spelar tillsammans varje vecka och har konserter och evenemang under året.</p>
+                    <div class="activity-expanded">
+                        <p>Ett levande musiksällskap i Ånge där medlemmarna möts en gång i veckan på medborgarhuset för att spela tillsammans och utveckla sitt musikaliska uttryck.</p>
+                        <a href="/Sidor/karta.html" class="map-btn-card" data-lat="62.525099" data-lng="15.660089" data-name="Ånge musiksällskap" data-text="Ett levande musiksällskap i Ånge där medlemmarna möts en gång i veckan på medborgarhuset för att spela tillsammans och utveckla sitt musikaliska uttryck." data-category="musik">Visa på karta</a>
+                    </div>
+                </div>
 
-        <div class="activity-grid">
-            
-            <div class="activity-card" role="button" tabindex="0" aria-expanded="false" data-category="sport" data-location="ange">
-                <img src="/Bilder/pexels-scott-neil-302581859-13608734.jpg" alt="Discgolf">
-                <h3>Spela discgolf på Kapellbacken</h3>
-                <p>En naturskön discgolfbana, perfekt för både nybörjare och erfarna spelare. Njut av en rolig dag utomhus i Ånge kommuns vackra omgivningar.</p>
-                <div class="activity-expanded">
-                    <p>Här kan du och dina vänner spela discgolf i en naturnära miljö. Banan är välskött och erbjuder utmaningar för alla nivåer. Ta med dina egna discar eller låna på golf och njut av en rolig dag i det fria.</p>
-                    <a href="/Sidor/karta.html" class="map-btn-card" data-lat="62.520369" data-lng="15.670899" data-name="Discgolf Ånge" data-text="Spela på discgolfbanan i Ånge" data-category="sport">Visa på karta</a>
+                <div class="activity-card" role="button" tabindex="0" aria-expanded="false" data-category="natur" data-location="ange">
+                    <img src="/Bilder/pexels-sanmane-1365428.jpg" alt="Ett barn som vandrar på en stig i skogen">
+                    <h3>Vandring till Tjärnmyråsstugan</h3>
+                    <p>Gå från Gammelbodavägen och följ den vackra stigen genom skog och över myrar fram till Tjärnmyråsstugan, en mysig stuga som erbjuder en perfekt paus med fika under vandringen.</p>
+                    <div class="activity-expanded">
+                        <p>En naturskön vandring genom skog och myrar som leder till Tjärnmyråsstugan, en perfekt plats för en fikapaus och att njuta av den vackra naturen i Ånge kommun.</p>
+                        <a href="/Sidor/karta.html" class="map-btn-card" data-lat="62.530531" data-lng="15.638228" data-name="Vandring till Tjärnmyråsstugan" data-text="En naturskön vandring genom skog och myrar som leder till Tjärnmyråsstugan, en perfekt plats för en fikapaus och att njuta av den vackra naturen i Ånge kommun." data-category="natur">Visa på karta</a>
+                    </div>
+                </div>
+
+                <div class="activity-card" role="button" tabindex="0" aria-expanded="false" data-category="sport" data-location="ange">
+                    <img src="/Bilder/pexels-kampus-8941651.jpg" alt="Barn som spelar fotboll på en gräsplan">
+                    <h3>Fotboll på Ånge IP</h3>
+                    <p>Spela fotboll på Ånge IP med vänner och familj.</p>
+                    <div class="activity-expanded">
+                        <p>Testa dina färdigheter i en rolig och hälsosam aktivitet. Fotboll är en fantastisk sätt att motionera och ha kul med vänner och familj.</p>
+                        <a href="/Sidor/karta.html" class="map-btn-card" data-lat="62.521202" data-lng="15.675071" data-name="Fotboll på Ånge IP" data-text="Spela fotboll på Ånge IP med vänner och familj." data-category="sport">Visa på karta</a>
+                    </div>
+                </div>
+
+                <div class="activity-card" role="button" tabindex="0" aria-expanded="false" data-category="natur" data-location="torpshammar">
+                    <img src="/Bilder/pexels-kelly-5704472.jpg" alt="En kayak som paddlar på en sjö omgiven av skog">
+                    <h3>Camp Mid Adventure</h3>
+                    <p>Upplev vattensport, camping och stuguthyrning i Torpshammar.</p>
+                    <div class="activity-expanded">
+                        <p>Ett spännande äventyr i naturen med vattensport, camping och stuguthyrning i Torpshammar.</p>
+                        <a href="/Sidor/karta.html" class="map-btn-card" data-lat="62.480489" data-lng="16.295338" data-name="Camp Mid Adventure" data-text="Upplev vattensport, camping och stuguthyrning i Torpshammar." data-category="natur">Visa på karta</a>
+                    </div>
                 </div>
             </div>
 
-            <div class="activity-card" role="button" tabindex="0" aria-expanded="false" data-category="mat" data-location="ange">
-                <img src="/Bilder/pexels-magda-ehlers-pexels-33313084.jpg" alt="Strömmensgårdsmejeri">
-                <h3>Strömmensgårdsmejeri</h3>
-                <p>Testa deras smakvärda ostar gjorda på lokala råvaror. Perfekt för en picknick eller som del av en måltid.</p>
-                <div class="activity-expanded">
-                    <p>Upptäck det lokala mejeriet och deras unika sortiment av ostar. Deras produkter är gjorda med omsorg och passion för kvalitet, och erbjuder en smakupplevelse som speglar Ånge kommuns rika jordbrukstradition.</p>
-                    <a href="/Sidor/karta.html" class="map-btn-card" data-lat="62.517164" data-lng="15.720908" data-name="Strömmensgårdsmejeri" data-text="Strömmensgårdsmejeri - Testa deras smakvärda ostar" data-category="mat">Visa på karta</a>
-                </div>
-            </div>
+        </section>
 
-            <div class="activity-card" role="button" tabindex="0" aria-expanded="false" data-category="sport" data-location="ljungaverk">
-                <img src="/Bilder/pexels-aedrian-11817547.jpg" alt="Fiske i Gissjön">
-                <h3>Fiske i Gissjön</h3>
-                <p>Gissjön är en populär plats för fiske, känd för sina goda fångster av abborre, gädda och sik.</p>
-                <div class="activity-expanded">
-                    <p>Perfekt fiskeplats för både nybörjare och erfarna fiskare, med vackra omgivningar. Ta med ditt spö och njut av fiskelyckan tillsammans med familjen eller vänner.</p>
-                    <a href="/Sidor/karta.html" class="map-btn-card" data-lat="62.507165" data-lng="16.207001" data-name="Fiske i Gissjön" data-text="Perfekt fiskeplats för både nybörjare och erfarna fiskare, med vackra omgivningar" data-category="sport">Visa på karta</a>
-                </div>
-            </div>
+    </main>
 
-            <div class="activity-card" role="button" tabindex="0" aria-expanded="false" data-category="familj" data-location="ange">
-                <img src="/Bilder/pexels-190703726-29746597.jpg" alt="Boda Borg">
-                <h3>Boda borg inomhusupplevelse</h3>
-                <p>Perfekt aktivitet för familjen, där ni tillsammans kan lösa kluriga utmaningar och ha kul i en spännande miljö.</p>
-                <div class="activity-expanded">
-                    <p>En rolig och utmanande inomhusupplevelse för hela familjen, med kluriga banor och äventyr att utforska. En perfekt dag på Boda Borg Torpshammar.</p>
-                    <a href="/Sidor/karta.html" class="map-btn-card" data-lat="62.457768" data-lng="16.377885" data-name="Boda Borg Torpshammar" data-text="En rolig och utmanande inomhusupplevelse för hela familjen, med kluriga banor och äventyr att utforska" data-category="familj">Visa på karta</a>
-                </div>
-            </div>
+        <footer>
+            <p>© 2026 Alex Flisager • Upptäck Ånge</p>
+        </footer>
 
-            <div class="activity-card" role="button" tabindex="0" aria-expanded="false" data-category="musik" data-location="ange">
-                <img src="/Bilder/pexels-zbigniew-bielecki-102835-1837767.jpg" alt="Musik">
-                <h3>Ånge musiksällskap</h3>
-                <p>För dig som redan är musiker och vill utveckla ditt spelande. Ånge musiksällskap spelar tillsammans varje vecka och har konserter och evenemang under året.</p>
-                <div class="activity-expanded">
-                    <p>Ett levande musiksällskap i Ånge där medlemmarna möts en gång i veckan på medborgarhuset för att spela tillsammans och utveckla sitt musikaliska uttryck.</p>
-                    <a href="/Sidor/karta.html" class="map-btn-card" data-lat="62.525099" data-lng="15.660089" data-name="Ånge musiksällskap" data-text="Ett levande musiksällskap i Ånge där medlemmarna möts en gång i veckan på medborgarhuset för att spela tillsammans och utveckla sitt musikaliska uttryck." data-category="musik">Visa på karta</a>
-                </div>
-            </div>
-
-            <div class="activity-card" role="button" tabindex="0" aria-expanded="false" data-category="natur" data-location="ange">
-                <img src="/Bilder/pexels-sanmane-1365428.jpg" alt="Vandring till Tjärnmyråsstugan">
-                <h3>Vandring till Tjärnmyråsstugan</h3>
-                <p>Gå från Gammelbodavägen och följ den vackra stigen genom skog och över myrar fram till Tjärnmyråsstugan, en mysig stuga som erbjuder en perfekt paus med fika under vandringen.</p>
-                <div class="activity-expanded">
-                    <p>En naturskön vandring genom skog och myrar som leder till Tjärnmyråsstugan, en perfekt plats för en fikapaus och att njuta av den vackra naturen i Ånge kommun.</p>
-                    <a href="/Sidor/karta.html" class="map-btn-card" data-lat="62.530531" data-lng="15.638228" data-name="Vandring till Tjärnmyråsstugan" data-text="En naturskön vandring genom skog och myrar som leder till Tjärnmyråsstugan, en perfekt plats för en fikapaus och att njuta av den vackra naturen i Ånge kommun." data-category="natur">Visa på karta</a>
-                </div>
-            </div>
-
-            <div class="activity-card" role="button" tabindex="0" aria-expanded="false" data-category="sport" data-location="ange">
-                <img src="/Bilder/pexels-kampus-8941651.jpg" alt="Fotboll på Ånge IP">
-                <h3>Fotboll på Ånge IP</h3>
-                <p>Spela fotboll på Ånge IP med vänner och familj.</p>
-                <div class="activity-expanded">
-                    <p>Testa dina färdigheter i en rolig och hälsosam aktivitet. Fotboll är en fantastisk sätt att motionera och ha kul med vänner och familj.</p>
-                    <a href="/Sidor/karta.html" class="map-btn-card" data-lat="62.521202" data-lng="15.675071" data-name="Fotboll på Ånge IP" data-text="Spela fotboll på Ånge IP med vänner och familj." data-category="aktiviteter">Visa på karta</a>
-                </div>
-            </div>
-
-            <div class="activity-card" role="button" tabindex="0" aria-expanded="false" data-category="natur" data-location="torpshammar">
-                <img src="/Bilder/pexels-kelly-5704472.jpg" alt="Camp Mid Adventure">
-                <h3>Camp Mid Adventure</h3>
-                <p>Upplev vattensport, camping och stuguthyrning i Torpshammar.</p>
-                <div class="activity-expanded">
-                    <p>Ett spännande äventyr i naturen med vattensport, camping och stuguthyrning i Torpshammar.</p>
-                    <a href="/Sidor/karta.html" class="map-btn-card" data-lat="62.480489" data-lng="16.295338" data-name="Camp Mid Adventure" data-text="Upplev vattensport, camping och stuguthyrning i Torpshammar." data-category="natur">Visa på karta</a>
-                </div>
-            </div>
-        </div>
-
-    </section>
-
-</main>
-
-    <footer>
-        <p>© 2026 Alex Flisager • Upptäck Ånge</p>
-    </footer>
-
-    <script src="/Scripts/copyright.js"></script>
-    <script src="/Scripts/aktiviteter.js"></script>
-    <script src="/Scripts/map-links.js"></script>
-
-</body>
+        <script src="/Scripts/copyright.js"></script>
+        <script src="/Scripts/aktiviteter.js"></script>
+        <script src="/Scripts/map-links.js"></script>
+    </body>
 </html>
