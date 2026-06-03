@@ -55,6 +55,7 @@ section h2 {
     color: var(--primary);
 }
 
+/*Leaflet z-index fix*/
 .leaflet-top,
 .leaflet-bottom {
     z-index: 500 !important;
