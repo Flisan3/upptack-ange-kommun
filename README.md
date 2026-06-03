@@ -30,7 +30,7 @@ Hur du startar upp projektet:
 
 6. Öppna visual studio och tryck på source control eller ctrl + shift + g
 
-7. Välj "Clone repository" och pasta in länken
+7. Välj "Clone repository" och pasta in repository-länken
 
 8. Skapa eller välj en mapp för att spara projektet i.
 
