@@ -1,31 +1,50 @@
+const noDangerousChars = value => !/[<>]/.test(value);
+
+
 // Hanterar validering och interaktion för kontaktformuläret
 document.addEventListener('DOMContentLoaded', () => {
   const form = document.querySelector('.contact-form');
   if (!form) return;
 
-  // Definiera fält och deras valideringsregler
-  const fields = [
-    {
-      name: 'name',
-      validator: value => value.trim().length >= 2,
-      message: 'Ange ett namn med minst 2 tecken.'
-    },
-    {
-      name: 'email',
-      validator: value => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value),
-      message: 'Ange en giltig e-postadress.'
-    },
-    {
-      name: 'subject',
-      validator: value => value.trim().length >= 3,
-      message: 'Ange ett ämne.'
-    },
-    {
-      name: 'message',
-      validator: value => value.trim().length >= 10,
-      message: 'Skriv ett meddelande med minst 10 tecken.'
-    }
-  ];
+  // Definiera fält och deras valideringsregler samt se till att farliga symboler inte används.
+const fields = [
+  {
+    name: 'name',
+    validator: value =>
+      noDangerousChars(value) &&
+      value.trim().length >= 2
+      && value.trim().length <355,
+    message: 'Ange ett namn med minst 2 tecken.'
+  },
+  {
+    name: 'email',
+    validator: value =>
+      noDangerousChars(value) &&
+      /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value),
+    message: 'Ange en giltig e-postadress.'
+  },
+  {
+    name: 'subject',
+    validator: value =>
+      noDangerousChars(value) &&
+      value.trim().length >= 3
+      && value.trim().length <50,
+    message: 'Ange ett ämne.'
+  },
+  {
+    name: 'message',
+    validator: value =>
+      noDangerousChars(value) &&
+      value.trim().length >= 10,
+    message: 'Skriv ett meddelande med minst 10 tecken.'
+  },
+
+  {
+  name: 'gdpr',
+  validator: value => value === true,
+  message: 'Du måste godkänna villkoren och GDPR för att fortsätta.'
+  }
+];
 
   // Funktioner för att visa och rensa felmeddelanden
   const getFormGroup = element => element.closest('.form-group');
@@ -61,7 +80,14 @@ document.addEventListener('DOMContentLoaded', () => {
     // Validera varje fält och visa felmeddelanden vid behov
     fields.forEach(({ name, validator, message }) => {
       const input = form.querySelector(`[name="${name}"]`);
-      const value = input ? input.value : '';
+      let value;
+
+      if (input.type === 'checkbox') {
+        value = input.checked;
+      } else {
+        value = input ? input.value : '';
+      }
+      
       if (!validator(value)) {
         isValid = false;
         showError(input, message);
