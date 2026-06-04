@@ -55,6 +55,13 @@ section h2 {
     color: var(--primary);
 }
 
+section h1 {
+    text-align: center;
+    font-size: 36px;
+    margin-bottom: 30px;
+    color: var(--primary);
+}
+
 /*Leaflet z-index fix*/
 .leaflet-top,
 .leaflet-bottom {
@@ -88,7 +95,7 @@ section h2 {
     transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
-.hero-content h2 {
+.hero-content h1 {
     font-size: 64px;
     margin-bottom: 20px;
 }
@@ -692,6 +699,25 @@ nav.scrolled a:hover {
     color: var(--bg);
     text-align: center;
     height: 550px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.food-hero-content {
+    max-width: 800px;
+    color: var(--white);
+}
+
+.food-hero-content h1 {
+    font-size: 60px;
+    margin-bottom: 20px;
+}
+
+.food-hero-content p {
+    font-size: 20px;
+    line-height: 1.8;
+    text-shadow: 2px 2px 2px var(--dark);
 }
 
 .food-hero-content {
@@ -701,13 +727,6 @@ nav.scrolled a:hover {
 .food-hero h1 {
     font-size: 48px;
     margin-bottom: 10px;
-}
-
-.food-hero p {
-    font-size: 18px;
-    opacity: 0.9;
-    color: var(--white);
-    text-shadow: 0 1px 3px rgba(0,0,0,0.6);
 }
 
 .food-text {
