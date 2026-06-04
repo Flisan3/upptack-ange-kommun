@@ -1,31 +1,41 @@
+const noDangerousChars = value => !/[<>]/.test(value);
+
 // Hanterar validering och interaktion för kontaktformuläret
 document.addEventListener('DOMContentLoaded', () => {
   const form = document.querySelector('.contact-form');
   if (!form) return;
 
-  // Definiera fält och deras valideringsregler
-  const fields = [
-    {
-      name: 'name',
-      validator: value => value.trim().length >= 2,
-      message: 'Ange ett namn med minst 2 tecken.'
-    },
-    {
-      name: 'email',
-      validator: value => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value),
-      message: 'Ange en giltig e-postadress.'
-    },
-    {
-      name: 'subject',
-      validator: value => value.trim().length >= 3,
-      message: 'Ange ett ämne.'
-    },
-    {
-      name: 'message',
-      validator: value => value.trim().length >= 10,
-      message: 'Skriv ett meddelande med minst 10 tecken.'
-    }
-  ];
+  // Definiera fält och deras valideringsregler samt se till att farliga symboler inte används.
+const fields = [
+  {
+    name: 'name',
+    validator: value =>
+      noDangerousChars(value) &&
+      value.trim().length >= 2,
+    message: 'Ange ett namn med minst 2 tecken.'
+  },
+  {
+    name: 'email',
+    validator: value =>
+      noDangerousChars(value) &&
+      /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value),
+    message: 'Ange en giltig e-postadress.'
+  },
+  {
+    name: 'subject',
+    validator: value =>
+      noDangerousChars(value) &&
+      value.trim().length >= 3,
+    message: 'Ange ett ämne.'
+  },
+  {
+    name: 'message',
+    validator: value =>
+      noDangerousChars(value) &&
+      value.trim().length >= 10,
+    message: 'Skriv ett meddelande med minst 10 tecken.'
+  }
+];
 
   // Funktioner för att visa och rensa felmeddelanden
   const getFormGroup = element => element.closest('.form-group');
