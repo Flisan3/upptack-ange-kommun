@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const mainLayout = document.querySelector(".activities-layout");
     const toggleButton = document.querySelector(".filter-toggle");
     const cards = document.querySelectorAll(".activity-card");
+    const header = document.querySelector(".activities-content h1"); // Ny: används för att visa "Inga resultat"
 
     // Event listener för att hantera filterpanelen och dess responsivitet
     if (toggleButton && filterPanel && mainLayout) {
@@ -36,6 +37,9 @@ document.addEventListener("DOMContentLoaded", () => {
         const location = form.querySelector("select[name='location']").value.toLowerCase();
         const search = form.querySelector("input[name='search']").value.toLowerCase();
 
+        // Räknar hur många kort som visas
+        let visibleCount = 0; 
+
         // Filtrera korten baserat på valda kriterier
         cards.forEach(card => {
             const cardCategory = card.dataset.category;
@@ -48,8 +52,16 @@ document.addEventListener("DOMContentLoaded", () => {
             const matchSearch = text.includes(search);
 
             // Visa eller dölj kortet baserat på om det matchar kriterierna
-            card.style.display = (matchCategory && matchLocation && matchSearch) ? "block" : "none";
+            const isVisible = (matchCategory && matchLocation && matchSearch);
+            card.style.display = isVisible ? "block" : "none";
+
+            if (isVisible) visibleCount++;
         });
+
+        // Uppdatera header baserat på antal resultat
+        if (header) {
+            header.textContent = visibleCount === 0 ? "Inga resultat" : "Alla aktiviteter";
+        }
     }
 
     // Event listener för att hantera formulärets submit-event och filtrera korten
