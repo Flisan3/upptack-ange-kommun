@@ -3,8 +3,8 @@
 :root {
     --bg: #f4f6f3;
     --primary: #2f4f4f;
-    --secondary: #52796f;
-    --accent: #84a98c;
+    --secondary: #2a5750;
+    --accent: #2e5c43;
     --light: #cad2c5;
     --dark: #1f2933;
     --white: #f5f5f5;
@@ -28,7 +28,6 @@ body {
 }
 
 body.lock-scroll {
-    overflow: hidden;
     height: 100vh;
 }
 
@@ -147,6 +146,7 @@ nav {
     width: 100%;
     z-index: 1000;
     transition: 0.3s ease;
+    gap: 0;
 }
 
 nav ul {
@@ -173,6 +173,22 @@ nav.scrolled a {
 
 nav.scrolled a:hover {
     color: var(--secondary);
+}
+
+.nav-links {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+    padding: 0;
+    margin: 0;
+    max-height: none;
+    opacity: 1;
+    overflow: visible;
+}
+
+.nav-toggle {
+    display: none;
 }
 
 /* Page variants */
@@ -292,9 +308,9 @@ nav.scrolled a:hover {
     transform: translateY(-5px);
 }
 
-.card,
-.activity-card {
-    overflow: hidden;
+.activity-card,
+.category-card {
+    overflow: visible !important
 }
 
 .card img,
@@ -354,10 +370,11 @@ nav.scrolled a:hover {
 }
 
 .activity-expanded {
-    max-height: 0;
-    overflow: hidden;
-    opacity: 0;
-    transition: all 0.4s ease;
+    display: none;
+}
+
+.activity-card.expanded .activity-expanded {
+    display: block;
 }
 
 .activity-card img {
@@ -387,6 +404,22 @@ nav.scrolled a:hover {
     max-height: 400px;
     opacity: 1;
     margin-top: 15px;
+}
+
+.activity-card:focus-visible {
+    outline: 3px solid #000;
+    outline-offset: 4px;
+    transform: translateY(-5px);
+}
+
+.activity-card {
+    cursor: pointer;
+}
+
+.activity-card:focus-visible {
+    outline: 3px solid #000;
+    outline-offset: 4px;
+    transform: translateY(-5px);
 }
 
 /* Categories */
@@ -621,6 +654,13 @@ nav.scrolled a:hover {
 .filter-form button:hover,
 .contact-form button:hover {
     background: var(--primary);
+}
+
+.filter-form select:focus-visible,
+.filter-form input:focus-visible,
+.filter-form button:focus-visible {
+    outline: 2px solid #000;
+    outline-offset: 2px;
 }
 
 /* Form validation */
@@ -1132,6 +1172,19 @@ nav.scrolled a:hover {
     height: 18px;
 }
 
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.checkbox-label input[type="checkbox"]:focus-visible {
+    outline: 2px solid #000;
+    outline-offset: 3px;
+    border-radius: 20%;
+}
+
 .contact-info-section {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -1443,8 +1496,7 @@ footer {
     .food-card,
     .event-card,
     .card {
-        max-height: 320px !important;
-        overflow: hidden !important;
+        overflow: visible !important;
     }
 
     .activity-card.expanded,
@@ -1457,7 +1509,7 @@ footer {
 
     .activity-expanded {
         max-height: 0;
-        overflow: hidden;
+        overflow: visible !important;
     }
 
     .activities-layout {
@@ -1469,7 +1521,7 @@ footer {
 
     .activities-layout .activity-card {
         max-height: 220px;
-        overflow: hidden;
+        overflow: visible !important;
         position: relative;
     }
 
@@ -1480,8 +1532,8 @@ footer {
     }
 
     .activities-layout .activity-card {
-    max-height: 220px;
-    overflow: hidden;
+        max-height: 220px;
+        overflow: hidden;
     }
     
     .activity-card.expanded .activity-expanded {
@@ -1687,6 +1739,50 @@ footer {
     .event-content {
         border-radius: 0 0 18px 18px !important;
     }
+
+    /* Mobile nav toggle */
+    .nav-toggle {
+        display: block;
+        background: none;
+        border: none;
+        cursor: pointer;
+        width: 42px;
+        height: 42px;
+        padding: 6px;
+        z-index: 2001;
+    }
+
+    .nav-icon {
+        width: 100%;
+        height: 100%;
+        fill: var(--dark);
+        transform: rotate(0deg);
+        transition: transform 0.35s ease;
+    }
+
+    .nav-toggle.open .nav-icon {
+        transform: rotate(180deg);
+    }
+
+    .nav-links {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        text-align: center;
+        gap: 18px;
+        padding: 0;
+        max-height: 0;
+        opacity: 0;
+        overflow: hidden;
+        transition: max-height 0.45s ease, opacity 0.35s ease;
+    }
+
+    .nav-links.open {
+        max-height: 500px;
+        opacity: 1;
+        padding: 20px 0;
+    }
+
 }
 
 
