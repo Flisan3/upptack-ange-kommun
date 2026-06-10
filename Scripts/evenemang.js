@@ -30,7 +30,6 @@ document.addEventListener("DOMContentLoaded", () => {
         // Lägg till tangentbordsnavigering för att expandera korten med Enter eller mellanslag
         card.addEventListener("keydown", (event) => {
             if (event.key === "Enter" || event.key === " ") {
-                event.preventDefault();
                 card.click();
             }
         });
