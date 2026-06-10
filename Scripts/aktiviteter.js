@@ -8,6 +8,14 @@ document.addEventListener("DOMContentLoaded", () => {
     const cards = document.querySelectorAll(".activity-card");
     const header = document.querySelector(".activities-content h1");
 
+    // Om användaren är på mobil, se till att filterpanelen startar stängd och knappen visar "Visa filter"
+    if (window.innerWidth <= 900 && toggleButton && filterPanel) {
+        filterPanel.classList.remove("open");
+        filterPanel.classList.add("closed");
+        toggleButton.textContent = "Visa filter";
+        toggleButton.setAttribute("aria-expanded", "false");
+    }
+
     // Event listener för att hantera filterpanelen och dess responsivitet
     if (toggleButton && filterPanel && mainLayout) {
         toggleButton.addEventListener("click", () => {

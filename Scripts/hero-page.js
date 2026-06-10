@@ -183,6 +183,15 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
 
+        // När användaren använder tab, tas scroll lock bort och animationen spelas
+        document.addEventListener("keydown", function handleFirstTab(e) {
+            if (e.key === "Tab") {
+                const heroBtn = document.querySelector(".hero-btn");
+                if (heroBtn) heroBtn.click();
+                document.removeEventListener("keydown", handleFirstTab);
+            }
+        });
+
     });
 
 });
