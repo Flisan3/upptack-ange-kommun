@@ -71,6 +71,29 @@ const fields = [
     }
   };
 
+  // Gör kryssrutan toggalbar med Enter-tangenten
+  const gdprCheckbox = form.querySelector('#gdpr');
+  if (gdprCheckbox) {
+    gdprCheckbox.addEventListener('keydown', e => {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        gdprCheckbox.checked = !gdprCheckbox.checked;
+        clearError(gdprCheckbox);
+      }
+    });
+  }
+
+  // Gör användarvillkorslänken öppningsbar med Enter-tangenten
+  const termsLink = form.querySelector('.terms-link');
+  if (termsLink) {
+    termsLink.addEventListener('keydown', e => {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        window.open(termsLink.href, '_blank', 'noopener,noreferrer');
+      }
+    });
+  }
+
   // Event listener för att hantera formulärets submit-event och validera fälten
   form.addEventListener('submit', event => {
     event.preventDefault();

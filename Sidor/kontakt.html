@@ -71,12 +71,12 @@
                         </div>
 
                         <div class="form-group">
-                            <label class="checkbox-label">
-                                <input type="checkbox" id="gdpr" name="gdpr" required>
-                                Jag har läst och godkänner
-                                <a href="/Sidor/Terms.html" target="_blank">användarvillkor</a>.
-                            </label>
-                            <span class="form-error" aria-live="polite"></span>
+                        <div class="checkbox-label" role="group" aria-labelledby="gdpr-label">
+                            <input type="checkbox" id="gdpr" name="gdpr" required>
+                            <label for="gdpr" id="gdpr-label">Jag har läst och godkänner</label>
+                            <a href="/Sidor/Terms.html" target="_blank" rel="noopener noreferrer" class="terms-link" tabindex="0" aria-label="Öppna användarvillkor (nytt fönster)">användarvillkor</a>.
+                        </div>
+                        <span class="form-error" aria-live="polite"></span>
                         </div>
 
                         <div class="form-group">
