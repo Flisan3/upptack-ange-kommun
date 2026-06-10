@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const mainLayout = document.querySelector(".activities-layout");
     const toggleButton = document.querySelector(".filter-toggle");
     const cards = document.querySelectorAll(".activity-card");
-    const header = document.querySelector(".activities-content h1"); // Ny: används för att visa "Inga resultat"
+    const header = document.querySelector(".activities-content h1");
 
     // Event listener för att hantera filterpanelen och dess responsivitet
     if (toggleButton && filterPanel && mainLayout) {
